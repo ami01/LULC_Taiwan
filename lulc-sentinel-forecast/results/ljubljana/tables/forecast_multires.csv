@@ -1,21 +1,21 @@
 variant,factor,agreement
-Null (persistence),1,0.89097
-Null (persistence),3,0.90647
-Null (persistence),9,0.93344
-Null (persistence),27,0.95524
-Markov + random,1,0.88708
-Markov + random,3,0.90309
-Markov + random,9,0.93101
-Markov + random,27,0.95329
-LR-CA,1,0.80635
-LR-CA,3,0.85560
-LR-CA,9,0.89309
-LR-CA,27,0.91388
-ANN-CA,1,0.79580
-ANN-CA,3,0.85469
-ANN-CA,9,0.89716
-ANN-CA,27,0.92001
-RF-CA,1,0.84541
-RF-CA,3,0.87542
-RF-CA,9,0.90554
-RF-CA,27,0.92920
+Null (persistence),1,0.99741
+Null (persistence),3,0.99748
+Null (persistence),9,0.99758
+Null (persistence),27,0.99765
+Markov + random,1,0.99684
+Markov + random,3,0.99691
+Markov + random,9,0.99704
+Markov + random,27,0.99730
+LR-CA,1,0.99710
+LR-CA,3,0.99717
+LR-CA,9,0.99729
+LR-CA,27,0.99746
+ANN-CA,1,0.99710
+ANN-CA,3,0.99718
+ANN-CA,9,0.99727
+ANN-CA,27,0.99735
+RF-CA,1,0.99658
+RF-CA,3,0.99666
+RF-CA,9,0.99683
+RF-CA,27,0.99716

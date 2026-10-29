@@ -15,7 +15,7 @@ Three epochs (t0, t1, t2) per site:
        LR-CA, ANN-CA, RF-CA, and RF-CA with the three-variable and the static
        (no dynamic distance) driver sets.
 3. Forecast from t2 with everything re-learned on t1 -> t2, under three
-   scenarios (business as usual, ecological protection, compact growth),
+   scenarios (business as usual, ecological protection, infill-only growth),
    with a quantity band from the alternative Markov matrix (t0 -> t2).
 
 Usage:
@@ -186,17 +186,19 @@ def main():
     # Scenario rules are resolution-aware so that they bind: at 300 m nearly
     # all growth is already within 1 km of built-up land, so a distance rule
     # of that size would leave the forecast unchanged.
-    #   Compact growth: new built-up only in cells adjacent to existing built-up.
+    #   Infill: new built-up only where >= 50 % of the 5 x 5 neighbourhood is
+    #   already built (adjacency alone does not bind: BAU growth is already
+    #   contiguous with the existing edge at every site).
     #   Ecological protection: tree cover, water and grass/shrub frozen, and no
     #   new built-up within a riparian buffer (100 m, or one cell if coarser).
-    compact_d = 1.5 * res
     riparian = max(100.0, float(res))
     scen = {
         "BAU": dict(),
         "Ecological protection": dict(
             restrict=np.isin(maps[t2], [1, 4, 5]),
             forbid=lambda m: {BUILT: FC.dist_to_class(m, 1, res) <= riparian}),
-        "Compact growth": dict(forbid=lambda m: {BUILT: FC.dist_to_class(m, BUILT, res) > compact_d}),
+        "Infill": dict(forbid=lambda m: {
+            BUILT: FC.neighbourhood(m, [BUILT])[0] < 0.5}),
     }
     hz = HORIZONS[s["name"]]
     rows = []

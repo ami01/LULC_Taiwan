@@ -9,9 +9,9 @@
     2035,
     2040
   ],
-  "chosen": "ANN-CA",
+  "chosen": "RF-CA (static)",
   "w": 0.4,
-  "e": 0.5,
+  "e": 0.2,
   "classes": [
     1,
     2,
@@ -30,5 +30,5 @@
     "dist_centre",
     "log_pop"
   ],
-  "cells": 307234
+  "cells": 307257
 }

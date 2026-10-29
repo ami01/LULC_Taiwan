@@ -233,7 +233,7 @@ def fig_forecast_maps(s):
     panels += [(read_tif(s["out"] / f"forecast_bau_{h}.tif")[0], f"BAU {h}") for h in hz[::2]]
     panels += [(read_tif(s["out"] / f"forecast_ecological_{hz[-1]}.tif")[0],
                 f"Ecological protection {hz[-1]}"),
-               (read_tif(s["out"] / f"forecast_compact_{hz[-1]}.tif")[0], f"Compact growth {hz[-1]}")]
+               (read_tif(s["out"] / f"forecast_infill_{hz[-1]}.tif")[0], f"Infill {hz[-1]}")]
     fig, axes = plt.subplots(1, len(panels), figsize=(2.6 * len(panels), 3.2))
     for ax, (m, t) in zip(axes, panels):
         show_map(ax, m, title=t)
@@ -248,7 +248,7 @@ def fig_trajectories(s):
     show = [2, 3, 4] if s["kind"] == "region" else [2, 3, 4, 5]
     show = [k for k in show if k in cfg["classes"]]
     fig, axes = plt.subplots(1, len(show), figsize=(2.6 * len(show), 2.8))
-    sc_col = {"BAU": SERIES[0], "Ecological protection": SERIES[2], "Compact growth": SERIES[1]}
+    sc_col = {"BAU": SERIES[0], "Ecological protection": SERIES[2], "Infill": SERIES[1]}
     for ax, k in zip(axes, show):
         ob = fa[(fa.scenario == "observed") & (fa.class_id == k)].sort_values("year")
         last = float(ob[ob.year == t2].area_km2.iloc[0])
