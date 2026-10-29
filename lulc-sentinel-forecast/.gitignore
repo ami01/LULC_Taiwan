@@ -1,0 +1,9 @@
+data/cache/
+logs/
+__pycache__/
+*.pyc
+manuscripts/**/*.aux
+manuscripts/**/*.log
+manuscripts/**/*.bbl
+manuscripts/**/*.blg
+manuscripts/**/*.out

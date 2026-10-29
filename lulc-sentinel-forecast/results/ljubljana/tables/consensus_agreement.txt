@@ -1,0 +1,2 @@
+wc2021_vs_io2021_agreement=0.7189
+consensus_aoi_fraction=0.5770

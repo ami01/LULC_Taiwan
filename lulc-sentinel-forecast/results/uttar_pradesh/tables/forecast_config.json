@@ -1,0 +1,35 @@
+{
+  "epochs": [
+    2000,
+    2010,
+    2020
+  ],
+  "horizons": [
+    2030,
+    2040,
+    2050
+  ],
+  "chosen": "ANN-CA",
+  "w": 0.4,
+  "e": 0.8,
+  "classes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "res": 300,
+  "drivers": [
+    "elevation",
+    "slope",
+    "dist_major_road",
+    "dist_minor_road",
+    "dist_rail",
+    "dist_water",
+    "dist_centre",
+    "log_pop"
+  ],
+  "cells": 2678721
+}

@@ -1,0 +1,31 @@
+variant,class_id,name,auc_calibration,auc_validation
+LR-CA,1,Water,0.9645,0.9948
+LR-CA,2,Built-up,0.8883,0.8294
+LR-CA,3,Cropland,0.7987,0.8782
+LR-CA,4,Tree cover,0.7471,0.7817
+LR-CA,5,Grass/shrub,0.7108,0.5742
+LR-CA,6,Bare,0.9877,
+ANN-CA,1,Water,0.9872,0.9933
+ANN-CA,2,Built-up,0.9465,0.8693
+ANN-CA,3,Cropland,0.8704,0.8373
+ANN-CA,4,Tree cover,0.8287,0.8445
+ANN-CA,5,Grass/shrub,0.8583,0.5118
+ANN-CA,6,Bare,0.9925,
+RF-CA,1,Water,0.9974,0.9934
+RF-CA,2,Built-up,0.9738,0.9096
+RF-CA,3,Cropland,0.9199,0.8707
+RF-CA,4,Tree cover,0.9089,0.8219
+RF-CA,5,Grass/shrub,0.9498,0.5648
+RF-CA,6,Bare,0.9987,
+RF-CA (3 var),1,Water,0.9540,0.9463
+RF-CA (3 var),2,Built-up,0.8927,0.8516
+RF-CA (3 var),3,Cropland,0.8152,0.8774
+RF-CA (3 var),4,Tree cover,0.7988,0.6177
+RF-CA (3 var),5,Grass/shrub,0.7526,0.6673
+RF-CA (3 var),6,Bare,0.9896,
+RF-CA (static),1,Water,0.9955,0.9924
+RF-CA (static),2,Built-up,0.9684,0.9118
+RF-CA (static),3,Cropland,0.8995,0.8180
+RF-CA (static),4,Tree cover,0.8871,0.8461
+RF-CA (static),5,Grass/shrub,0.9273,0.5856
+RF-CA (static),6,Bare,0.9964,

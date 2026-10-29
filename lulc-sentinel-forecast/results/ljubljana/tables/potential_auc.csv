@@ -1,0 +1,6 @@
+variant,class_id,name,auc_calibration,auc_validation
+LR-CA,2,Built-up,0.9394,0.9217
+ANN-CA,2,Built-up,0.3309,0.2717
+RF-CA,2,Built-up,0.9658,0.9034
+RF-CA (3 var),2,Built-up,0.8823,0.8253
+RF-CA (static),2,Built-up,0.9228,0.9111

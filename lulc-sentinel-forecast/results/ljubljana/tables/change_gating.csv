@@ -1,0 +1,3 @@
+year,ref_year,threshold,frac_flagged,raw_label_change,gated_label_change,raw_built_km2,gated_built_km2,ref_built_km2
+2018,2021,5.63823,0.00320,0.12971,0.00124,56.04300,53.50540,53.66480
+2024,2021,4.93414,0.00698,0.12012,0.00256,54.31020,53.91680,53.66480

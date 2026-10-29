@@ -1,0 +1,20 @@
+% Shared preamble for the four manuscripts. Journal-neutral: move the body
+% into the target journal's class when one is chosen.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\sisetup{group-separator={,},group-minimum-digits=4}
+\bibliographystyle{abbrvnat}
+\graphicspath{{../../results/}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}

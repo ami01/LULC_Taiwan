@@ -1,0 +1,76 @@
+scenario,markov,year,class_id,name,area_km2,markov_km2
+BAU,t1t2,2030,1,Water,1.8963,1.8956
+BAU,t1t2,2030,2,Built-up,57.2121,57.3262
+BAU,t1t2,2030,3,Cropland,54.7047,54.6842
+BAU,t1t2,2030,4,Tree cover,126.5256,126.4497
+BAU,t1t2,2030,5,Grass/shrub,36.1719,36.1548
+BAU,t1t2,2035,1,Water,1.6380,1.6353
+BAU,t1t2,2035,2,Built-up,58.5126,58.6202
+BAU,t1t2,2035,3,Cropland,57.9258,57.9189
+BAU,t1t2,2035,4,Tree cover,123.7194,123.6288
+BAU,t1t2,2035,5,Grass/shrub,34.7148,34.7074
+BAU,t1t2,2040,1,Water,1.4868,1.4864
+BAU,t1t2,2040,2,Built-up,59.8671,59.9830
+BAU,t1t2,2040,3,Cropland,59.8320,59.8106
+BAU,t1t2,2040,4,Tree cover,121.0968,121.0187
+BAU,t1t2,2040,5,Grass/shrub,34.2279,34.2119
+BAU,t0t2,2030,1,Water,2.7360,2.7554
+BAU,t0t2,2030,2,Built-up,56.3202,54.8159
+BAU,t0t2,2030,3,Cropland,50.8842,51.2319
+BAU,t0t2,2030,4,Tree cover,126.4059,127.2684
+BAU,t0t2,2030,5,Grass/shrub,40.1643,40.4390
+BAU,t0t2,2035,1,Water,2.9133,2.9441
+BAU,t0t2,2035,2,Built-up,56.3202,54.0079
+BAU,t0t2,2035,3,Cropland,53.2773,53.8364
+BAU,t0t2,2035,4,Tree cover,123.8796,125.1798
+BAU,t0t2,2035,5,Grass/shrub,40.1202,40.5424
+BAU,t0t2,2040,1,Water,3.0573,3.0976
+BAU,t0t2,2040,2,Built-up,56.3202,53.4149
+BAU,t0t2,2040,3,Cropland,55.1043,55.8314
+BAU,t0t2,2040,4,Tree cover,121.6548,123.2601
+BAU,t0t2,2040,5,Grass/shrub,40.3740,40.9066
+Ecological protection,t1t2,2030,1,Water,2.4723,1.8956
+Ecological protection,t1t2,2030,2,Built-up,56.2113,57.3262
+Ecological protection,t1t2,2030,3,Cropland,52.8687,54.6842
+Ecological protection,t1t2,2030,4,Tree cover,130.0041,126.4497
+Ecological protection,t1t2,2030,5,Grass/shrub,34.9542,36.1548
+Ecological protection,t1t2,2035,1,Water,2.4723,1.6353
+Ecological protection,t1t2,2035,2,Built-up,56.2113,58.6202
+Ecological protection,t1t2,2035,3,Cropland,54.9153,57.9189
+Ecological protection,t1t2,2035,4,Tree cover,130.0041,123.6288
+Ecological protection,t1t2,2035,5,Grass/shrub,32.9076,34.7074
+Ecological protection,t1t2,2040,1,Water,2.4723,1.4864
+Ecological protection,t1t2,2040,2,Built-up,56.2113,59.9830
+Ecological protection,t1t2,2040,3,Cropland,55.8675,59.8106
+Ecological protection,t1t2,2040,4,Tree cover,130.0041,121.0187
+Ecological protection,t1t2,2040,5,Grass/shrub,31.9554,34.2119
+Compact growth,t1t2,2030,1,Water,1.8963,1.8956
+Compact growth,t1t2,2030,2,Built-up,57.2121,57.3262
+Compact growth,t1t2,2030,3,Cropland,54.7047,54.6842
+Compact growth,t1t2,2030,4,Tree cover,126.5256,126.4497
+Compact growth,t1t2,2030,5,Grass/shrub,36.1719,36.1548
+Compact growth,t1t2,2035,1,Water,1.6380,1.6353
+Compact growth,t1t2,2035,2,Built-up,58.5126,58.6202
+Compact growth,t1t2,2035,3,Cropland,57.9258,57.9189
+Compact growth,t1t2,2035,4,Tree cover,123.7194,123.6288
+Compact growth,t1t2,2035,5,Grass/shrub,34.7148,34.7074
+Compact growth,t1t2,2040,1,Water,1.4868,1.4864
+Compact growth,t1t2,2040,2,Built-up,59.8671,59.9830
+Compact growth,t1t2,2040,3,Cropland,59.8320,59.8106
+Compact growth,t1t2,2040,4,Tree cover,121.0968,121.0187
+Compact growth,t1t2,2040,5,Grass/shrub,34.2279,34.2119
+observed,,2018,1,Water,2.1132,
+observed,,2021,1,Water,2.9304,
+observed,,2024,1,Water,2.4723,
+observed,,2018,2,Built-up,58.0518,
+observed,,2021,2,Built-up,55.9773,
+observed,,2024,2,Built-up,56.1672,
+observed,,2018,3,Cropland,40.5360,
+observed,,2021,3,Cropland,39.8646,
+observed,,2024,3,Cropland,46.9062,
+observed,,2018,4,Tree cover,132.9804,
+observed,,2021,4,Tree cover,131.7546,
+observed,,2024,4,Tree cover,130.0041,
+observed,,2018,5,Grass/shrub,42.8292,
+observed,,2021,5,Grass/shrub,45.9837,
+observed,,2024,5,Grass/shrub,40.9608,

@@ -1,0 +1,474 @@
+{
+ "10.1016/j.compenvurbsys.2020.101569": {
+  "title": "Understanding the drivers of sustainable land expansion using a patch-generating land use simulation (PLUS) model: A case study in Wuhan, China",
+  "year": 2021,
+  "venue": "Computers, Environment and Urban Systems",
+  "authors": "Liang, Xun; Guan, Qingfeng; Clarke, Keith C.; Liu, Shishi",
+  "abstract": "Cellular Automata (CA) are widely used to model the dynamics within complex land use and land cover (LULC) systems. Past CA model research has focused on improving the technical modeling procedures, and only a few studies have sought to improve our understanding of the nonlinear relationships that underlie LULC change. Many CA models lack the ability to simulate the detailed patch evolution of multiple land use types. This study introduces a patch-generating land use simulation (PLUS) model that integrates a land expansion analysis strategy and a CA model based on multi-type random patch seeds. These were used to understand the drivers of land expansion and to investigate the landscape dynamics in Wuhan, China. The proposed model achieved a higher simulation accuracy and more similar landscape pattern metrics to the true landscape than other CA models tested. The land expansion analysis strategy also uncovered some underlying transition rules, such as that grassland is most likely to be found where it is not strongly impacted by human activities, and that deciduous forest areas tend to grow adjacent to arterial roads. We also projected the structure of land use under different optimizing scenarios for 2035 by combining the proposed model with multi-objective programming. The results indicate that the proposed model can help policymakers to manage future land use dynamics and so to realize more sustainable land use patterns for future development. Software for PLUS has been made available at https://github.com/HPSCIL/Patch-generating_Land_Use_Simulation_Model",
+  "src": "semanticscholar"
+ },
+ "10.1016/j.landurbplan.2017.09.019": {
+  "title": "A future land use simulation model (FLUS) for simulating multiple land use scenarios by coupling human and natural effects",
+  "year": 2017,
+  "venue": "Landscape and Urban Planning",
+  "authors": "Liu, Xiaoping; Liang, Xun; Li, Xia; Xu, Xiaocong",
+  "abstract": "TLDR: A future land use simulation (FLUS) model that explicitly simulates the long-term spatial trajectories of multiple LUCCs, and the simulation accuracy is higher than other well-accepted models, such as CLUE-S and CA models.",
+  "src": "s2-tldr"
+ },
+ "10.1016/j.rse.2011.11.026": {
+  "title": "Sentinel-2: ESA's Optical High-Resolution Mission for GMES Operational Services",
+  "year": 2012,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Drusch, M.; Del Bello, U.; Carlier, S.; Colin, O.",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.rse.2011.05.028": {
+  "title": "GMES Sentinel-1 mission",
+  "year": 2012,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Torres, Ramon; Snoeij, Paul; Geudtner, Dirk; Bibby, David",
+  "abstract": "TLDR: The unique data availability performance of the Sentinel-1 routine operations makes the mission particularly suitable for emergency response support, marine surveillance, ice monitoring and interferometric applications such as detection of subsidence and landslides.",
+  "src": "s2-tldr"
+ },
+ "10.3390/rs12142291": {
+  "title": "Sentinel-2 Data for Land Cover/Use Mapping: A Review",
+  "year": 2020,
+  "venue": "Remote Sensing",
+  "authors": "Phiri, Darius; Simwanda, Matamyo; Salekin, Serajis; Nyirenda, Vincent",
+  "abstract": "The advancement in satellite remote sensing technology has revolutionised the approaches to monitoring the Earth’s surface. The development of the Copernicus Programme by the European Space Agency (ESA) and the European Union (EU) has contributed to the effective monitoring of the Earth’s surface by producing the Sentinel-2 multispectral products. Sentinel-2 satellites are the second constellation of the ESA Sentinel missions and carry onboard multispectral scanners. The primary objective of the Sentinel-2 mission is to provide high resolution satellite data for land cover/use monitoring, climate change and disaster monitoring, as well as complementing the other satellite missions such as Landsat. Since the launch of Sentinel-2 multispectral instruments in 2015, there have been many studies on land cover/use classification which use Sentinel-2 images. However, no review studies have been dedicated to the application of ESA Sentinel-2 land cover/use monitoring. Therefore, this review focuses on two aspects: (1) assessing the contribution of ESA Sentinel-2 to land cover/use classification, and (2) exploring the performance of Sentinel-2 data in different applications (e.g., forest, urban area and natural hazard monitoring). The present review shows that Sentinel-2 has a positive impact on land cover/use monitoring, specifically in monitoring of crop, forests, urban areas, and water resources. The contemporary high adoption and application of Sentinel-2 can be attributed to the higher spatial resolution (10 m) than other medium spatial resolution images, the high temporal resolution of 5 days and the availability of the red-edge bands with multiple applications. The ability to integrate Sentinel-2 data with other remotely sensed data, as part of data analysis, improves the overall accuracy (OA) when working with Sentinel-2 images. The free access policy drives the increasing use of Sentinel-2 data, especially in developing countries where financial resources for the acquisition of remotely sensed data are limited. The literature also shows that the use of Sentinel-2 data produces high accuracies (>80%) with machine-learning classifiers such as support vector machine (SVM) and Random forest (RF). However, other classifiers such as maximum likelihood analysis are also common. Although Sentinel-2 offers many opportunities for land cover/use classification, there are challenges which include mismatching with Landsat OLI-8 data, a lack of thermal bands, and the differences in spatial resolution among the bands of Sentinel-2. Sentinel-2 data show promise and have the potential to contribute significantly towards land cover/use monitoring.",
+  "src": "crossref"
+ },
+ "10.1016/j.isprsjprs.2016.01.011": {
+  "title": "Random forest in remote sensing: A review of applications and future directions",
+  "year": 2016,
+  "venue": "ISPRS Journal of Photogrammetry and Remote Sensing",
+  "authors": "Belgiu, Mariana; Drăguţ, Lucian",
+  "abstract": "TLDR: This review has revealed that RF classifier can successfully handle high data dimensionality and multicolinearity, being both fast and insensitive to overfitting.",
+  "src": "s2-tldr"
+ },
+ "10.1080/01431161.2018.1433343": {
+  "title": "Implementation of machine-learning classification in remote sensing: an applied review",
+  "year": 2018,
+  "venue": "International Journal of Remote Sensing",
+  "authors": "Maxwell, Aaron E.; Warner, Timothy A.; Fang, Fang",
+  "abstract": "ABSTRACT Machine learning offers the potential for effective and efficient classification of remotely sensed imagery. The strengths of machine learning include the capacity to handle data of high dimensionality and to map classes with very complex characteristics. Nevertheless, implementing a machine-learning classification is not straightforward, and the literature provides conflicting advice regarding many key issues. This article therefore provides an overview of machine learning from an applied perspective. We focus on the relatively mature methods of support vector machines, single decision trees (DTs), Random Forests, boosted DTs, artificial neural networks, and k-nearest neighbours (k-NN). Issues considered include the choice of algorithm, training data requirements, user-defined parameter selection and optimization, feature space impacts and reduction, and computational costs. We illustrate these issues through applying machine-learning classification to two publically available remotely sensed data sets.",
+  "src": "semanticscholar"
+ },
+ "10.1016/j.isprsjprs.2010.11.001": {
+  "title": "Support vector machines in remote sensing: A review",
+  "year": 2011,
+  "venue": "ISPRS Journal of Photogrammetry and Remote Sensing",
+  "authors": "Mountrakis, Giorgos; Im, Jungho; Ogole, Caesar",
+  "abstract": "TLDR: This paper reviews remote sensing implementations of support vector machines (SVMs), a promising machine learning methodology, and hopes that this survey will provide guidelines for future applications of SVMs and possible areas of algorithm enhancement.",
+  "src": "s2-tldr"
+ },
+ "10.1145/2939672.2939785": {
+  "title": "XGBoost",
+  "year": 2016,
+  "venue": "Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining",
+  "authors": "Chen, Tianqi; Guestrin, Carlos",
+  "abstract": "Tree boosting is a highly effective and widely used machine learning method. In this paper, we describe a scalable end-to-end tree boosting system called XGBoost, which is used widely by data scientists to achieve state-of-the-art results on many machine learning challenges. We propose a novel sparsity-aware algorithm for sparse data and weighted quantile sketch for approximate tree learning. More importantly, we provide insights on cache access patterns, data compression and sharding to build a scalable tree boosting system. By combining these insights, XGBoost scales beyond billions of examples using far fewer resources than existing systems.",
+  "src": "semanticscholar"
+ },
+ "10.1023/a:1010933404324": {
+  "title": "Random Forests",
+  "year": 2001,
+  "venue": "Machine Learning",
+  "authors": "Breiman, Leo",
+  "abstract": "Random forests are a combination of tree predictors such that each tree depends on the values of a random vector sampled independently and with the same distribution for all trees in the forest. The generalization error for forests converges a.s. to a limit as the number of trees in the forest becomes large. The generalization error of a forest of tree classifiers depends on the strength of the individual trees in the forest and the correlation between them. Using a random selection of features to split each node yields error rates that compare favorably to Adaboost (Y. Freund & R. Schapire, Machine Learning: Proceedings of the Thirteenth International conference, ***, 148–156), but are more robust with respect to noise. Internal estimates monitor error, strength, and correlation and these are used to show the response to increasing the number of features used in the splitting. Internal estimates are also used to measure variable importance. These ideas are also applicable to regression.",
+  "src": "semanticscholar"
+ },
+ "10.1016/j.rse.2014.02.015": {
+  "title": "Good practices for estimating area and assessing accuracy of land change",
+  "year": 2014,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Olofsson, Pontus; Foody, Giles M.; Herold, Martin; Stehman, Stephen V.",
+  "abstract": null,
+  "src": null
+ },
+ "10.14358/pers.70.5.627": {
+  "title": "Thematic Map Comparison",
+  "year": 2004,
+  "venue": "Photogrammetric Engineering &amp; Remote Sensing",
+  "authors": "Foody, Giles M.",
+  "abstract": "The accuracy of thematic maps derived by image classification analyses is often compared in remote sensing studies. This comparison is typically achieved by a basic subjective assessment of the observed difference in accuracy but should be undertaken in a statistically rigorous fashion. One approach for the evaluation of the statistical significance of a difference in map accuracy that has been widely used in remote sensing research is based on the comparison of the kappa coefficient of agreement derived for each map. The conventional approach to the comparison of kappa coefficients assumes that the samples used in their calculation are independent, an assumption that is commonly unsatisfied because the same sample of ground data sites is often used for each map. Alternative methods to evaluate the statistical significance of differences in accuracy are available for both related and independent samples. Approaches for map comparison based on the kappa coefficient and proportion of correctly allocated cases, the two most widely used metrics of thematic map accuracy in remote sensing, are discussed. An example illustrates how classifications based on the same sample of ground data sites may be compared rigorously and highlights the importance of distinguishing between one- and two-sided statistical tests in the comparison of classification accuracy statements.",
+  "src": "openalex"
+ },
+ "10.1002/sim.1438": {
+  "title": "Analysis of clustered matched‐pair data",
+  "year": 2003,
+  "venue": "Statistics in Medicine",
+  "authors": "Durkalski, Valerie L.; Palesch, Yuko Y.; Lipsitz, Stuart R.; Rust, Philip F.",
+  "abstract": "Abstract Evaluation of the performance of a new diagnostic procedure with respect to a standard procedure arises frequently in practice. The response of interest, often in a dichotomous form, is measured twice, once with each procedure. The two procedures are administered to either two matched individuals, or when practical, to the same individual. A large sample test for matched‐pair data is the McNemar test. The main assumption of this test is independent paired responses; however, when more than one outcome from an individual is measured by each procedure, the data are clustered. Examples of such cases can be seen in dental and ophthalmology studies. Variance adjustment methods for the analysis of clustered matched‐pair data have been proposed; however, because of unequal cluster sizes, variability of correlation structures within a cluster (within paired responses in a cluster as well as between paired responses in a cluster), and unequal success probabilities among the clusters, the performances of some available methods are not consistent. This research proposes a simple adjustment to the McNemar test for the analysis of clustered matched‐pair data. Method of moments is used to calculate a consistent variance estimator. Using Monte Carlo simulation, the size and power of the proposed test are compared to those of two currently available methods. To illustrate practical application, clustered matched‐pair data from two clinical studies are analysed. Copyright © 2003 John Wiley & Sons, Ltd.",
+  "src": "crossref"
+ },
+ "10.1038/s41467-020-18321-y": {
+  "title": "Spatial validation reveals poor predictive performance of large-scale ecological mapping models",
+  "year": 2020,
+  "venue": "Nature Communications",
+  "authors": "Ploton, Pierre; Mortier, Frédéric; Réjou-Méchain, Maxime; Barbier, Nicolas",
+  "abstract": "Abstract Mapping aboveground forest biomass is central for assessing the global carbon balance. However, current large-scale maps show strong disparities, despite good validation statistics of their underlying models. Here, we attribute this contradiction to a flaw in the validation methods, which ignore spatial autocorrelation (SAC) in data, leading to overoptimistic assessment of model predictive power. To illustrate this issue, we reproduce the approach of large-scale mapping studies using a massive forest inventory dataset of 11.8 million trees in central Africa to train and validate a random forest model based on multispectral and environmental variables. A standard nonspatial validation method suggests that the model predicts more than half of the forest biomass variation, while spatial validation methods accounting for SAC reveal quasi-null predictive power. This study underscores how a common practice in big data mapping studies shows an apparent high predictive power, even when predictors have poor relationships with the ecological variable of interest, thus possibly leading to erroneous maps and interpretations.",
+  "src": "crossref"
+ },
+ "10.1111/ecog.02881": {
+  "title": "Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure",
+  "year": 2017,
+  "venue": "Ecography",
+  "authors": "Roberts, David R.; Bahn, Volker; Ciuti, Simone; Boyce, Mark S.",
+  "abstract": "Ecological data often show temporal, spatial, hierarchical (random effects), or phylogenetic structure. Modern statistical approaches are increasingly accounting for such dependencies. However, when performing cross‐validation, these structures are regularly ignored, resulting in serious underestimation of predictive error. One cause for the poor performance of uncorrected (random) cross‐validation, noted often by modellers, are dependence structures in the data that persist as dependence structures in model residuals, violating the assumption of independence. Even more concerning, because often overlooked, is that structured data also provides ample opportunity for overfitting with non‐causal predictors. This problem can persist even if remedies such as autoregressive models, generalized least squares, or mixed models are used. Block cross‐validation, where data are split strategically rather than randomly, can address these issues. However, the blocking strategy must be carefully considered. Blocking in space, time, random effects or phylogenetic distance, while accounting for dependencies in the data, may also unwittingly induce extrapolations by restricting the ranges or combinations of predictor variables available for model training, thus overestimating interpolation errors. On the other hand, deliberate blocking in predictor space may also improve error estimates when extrapolation is the modelling goal. Here, we review the ecological literature on non‐random and blocked cross‐validation approaches. We also provide a series of simulations and case studies, in which we show that, for all instances tested, block cross‐validation is nearly universally more appropriate than random cross‐validation if the goal is predicting to new data or predictor space, or for selecting causal predictors. We recommend that block cross‐validation be used wherever dependence structures exist in a dataset, even if no correlation structure is visible in the fitted model residuals, or if the fitted models account for such correlations.",
+  "src": "crossref"
+ },
+ "10.1038/s41467-022-29838-9": {
+  "title": "Machine learning-based global maps of ecological variables and the challenge of assessing them",
+  "year": 2022,
+  "venue": "Nature Communications",
+  "authors": "Meyer, Hanna; Pebesma, Edzer",
+  "abstract": "The recent wave of published global maps of ecological variables has caused as much excitement as it has received criticism. Here we look into the data and methods mostly used for creating these maps, and discuss whether the quality of predicted values can be assessed, globally and locally.",
+  "src": "semanticscholar"
+ },
+ "10.1080/01431161.2011.552923": {
+  "title": "Death to Kappa: birth of quantity disagreement and allocation disagreement for accuracy assessment",
+  "year": 2011,
+  "venue": "International Journal of Remote Sensing",
+  "authors": "Pontius, Robert Gilmore; Millones, Marco",
+  "abstract": "The family of Kappa indices of agreement claim to compare a map's observed classification accuracy relative to the expected accuracy of baseline maps that can have two types of randomness: (1) random distribution of the quantity of each category and (2) random spatial allocation of the categories. Use of the Kappa indices has become part of the culture in remote sensing and other fields. This article examines five different Kappa indices, some of which were derived by the first author in 2000. We expose the indices' properties mathematically and illustrate their limitations graphically, with emphasis on Kappa's use of randomness as a baseline, and the often-ignored conversion from an observed sample matrix to the estimated population matrix. This article concludes that these Kappa indices are useless, misleading and/or flawed for the practical applications in remote sensing that we have seen. After more than a decade of working with these indices, we recommend that the profession abandon the use of Kappa indices for purposes of accuracy assessment and map comparison, and instead summarize the cross-tabulation matrix with two much simpler summary parameters: quantity disagreement and allocation disagreement. This article shows how to compute these two parameters using examples taken from peer-reviewed literature.",
+  "src": "openalex"
+ },
+ "10.1109/igarss47720.2021.9553499": {
+  "title": "Global land use / land cover with Sentinel 2 and deep learning",
+  "year": 2021,
+  "venue": "2021 IEEE International Geoscience and Remote Sensing Symposium IGARSS",
+  "authors": "Karra, Krishna; Kontgis, Caitlin; Statman-Weil, Zoe; Mazzariello, Joseph C.",
+  "abstract": "Land use/land cover (LULC) maps are foundational geospatial data products needed by analysts and decision makers across governments, civil society, industry, and finance to monitor global environmental change and measure risk to sustainable livelihoods and development. There is a strong need for high-level, automated geospatial analysis products that turn these pixels into actionable insights for non-geospatial experts. The Sentinel 2 satellites, first launched in mid-2015, are excellent candidates for LULC mapping due to their high spatial, spectral, and temporal resolution. Advances in deep learning and scalable cloud-based compute now provide the analysis capability required to unlock the value in global satellite imagery observations. Based on a novel, very large dataset of over 5 billion human-labeled Sentinel-2 pixels, we developed and deployed a deep learning segmentation model on Sentinel-2 data to create a global LULC map at 10m resolution that achieves state-of-the-art accuracy and enables automated LULC mapping from time series observations.",
+  "src": "openalex"
+ },
+ "10.3390/rs14164101": {
+  "title": "Global 10 m Land Use Land Cover Datasets: A Comparison of Dynamic World, World Cover and Esri Land Cover",
+  "year": 2022,
+  "venue": "Remote Sensing",
+  "authors": "Venter, Zander S.; Barton, David N.; Chakraborty, Tirthankar; Simensen, Trond",
+  "abstract": "The European Space Agency’s Sentinel satellites have laid the foundation for global land use land cover (LULC) mapping with unprecedented detail at 10 m resolution. We present a cross-comparison and accuracy assessment of Google’s Dynamic World (DW), ESA’s World Cover (WC) and Esri’s Land Cover (Esri) products for the first time in order to inform the adoption and application of these maps going forward. For the year 2020, the three global LULC maps show strong spatial correspondence (i.e., near-equal area estimates) for water, built area, trees and crop LULC classes. However, relative to one another, WC is biased towards over-estimating grass cover, Esri towards shrub and scrub cover and DW towards snow and ice. Using global ground truth data with a minimum mapping unit of 250 m2, we found that Esri had the highest overall accuracy (75%) compared to DW (72%) and WC (65%). Across all global maps, water was the most accurately mapped class (92%), followed by built area (83%), tree cover (81%) and crops (78%), particularly in biomes characterized by temperate and boreal forests. The classes with the lowest accuracies, particularly in the tundra biome, included shrub and scrub (47%), grass (34%), bare ground (57%) and flooded vegetation (53%). When using European ground truth data from LUCAS (Land Use/Cover Area Frame Survey) with a minimum mapping unit of <100 m2, we found that WC had the highest accuracy (71%) compared to DW (66%) and Esri (63%), highlighting the ability of WC to resolve landscape elements with more detail compared to DW and Esri. Although not analyzed in our study, we discuss the relative advantages of DW due to its frequent and near real-time data delivery of both categorical predictions and class probability scores. We recommend that the use of global LULC products should involve critical evaluation of their suitability with respect to the application purpose, such as aggregate changes in ecosystem accounting versus site-specific change detection in monitoring, considering trade-offs between thematic resolution, global versus. local accuracy, class-specific biases and whether change analysis is necessary. We also emphasize the importance of not estimating areas from pixel-counting alone but adopting best practices in design-based inference and area estimation that quantify uncertainty for a given study area.",
+  "src": "crossref"
+ },
+ "10.3390/rs13122301": {
+  "title": "Continental-Scale Land Cover Mapping at 10 m Resolution Over Europe (ELC10)",
+  "year": 2021,
+  "venue": "Remote Sensing",
+  "authors": "Venter, Zander S.; Sydenham, Markus A. K.",
+  "abstract": "Land cover maps are important tools for quantifying the human footprint on the environment and facilitate reporting and accounting to international agreements addressing the Sustainable Development Goals. Widely used European land cover maps such as CORINE (Coordination of Information on the Environment) are produced at medium spatial resolutions (100 m) and rely on diverse data with complex workflows requiring significant institutional capacity. We present a 10 m resolution land cover map (ELC10) of Europe based on a satellite-driven machine learning workflow that is annually updatable. A random forest classification model was trained on 70K ground-truth points from the LUCAS (Land Use/Cover Area Frame Survey) dataset. Within the Google Earth Engine cloud computing environment, the ELC10 map can be generated from approx. 700 TB of Sentinel imagery within approx. 4 days from a single research user account. The map achieved an overall accuracy of 90% across eight land cover classes and could account for statistical unit land cover proportions within 3.9% (R2 = 0.83) of the actual value. These accuracies are higher than that of CORINE (100 m) and other 10 m land cover maps including S2GLC and FROM-GLC10. Spectro-temporal metrics that capture the phenology of land cover classes were most important in producing high mapping accuracies. We found that the atmospheric correction of Sentinel-2 and the speckle filtering of Sentinel-1 imagery had a minimal effect on enhancing the classification accuracy (<1%). However, combining optical and radar imagery increased accuracy by 3% compared to Sentinel-2 alone and by 10% compared to Sentinel-1 alone. The addition of auxiliary data (terrain, climate and night-time lights) increased accuracy by an additional 2%. By using the centroid pixels from the LUCAS Copernicus module polygons we increased accuracy by <1%, revealing that random forests are robust against contaminated training data. Furthermore, the model requires very little training data to achieve moderate accuracies—the difference between 5K and 50K LUCAS points is only 3% (86% vs. 89%). This implies that significantly less resources are necessary for making in situ survey data (such as LUCAS) suitable for satellite-based land cover classification. At 10 m resolution, the ELC10 map can distinguish detailed landscape features like hedgerows and gardens, and therefore holds potential for aerial statistics at the city borough level and monitoring property-level environmental interventions (e.g., tree planting). Due to the reliance on purely satellite-based input data, the ELC10 map can be continuously updated independent of any country-specific geographic datasets.",
+  "src": "crossref"
+ },
+ "10.1038/s41597-022-01307-4": {
+  "title": "Dynamic World, Near real-time global 10 m land use land cover mapping",
+  "year": 2022,
+  "venue": "Scientific Data",
+  "authors": "Brown, Christopher F.; Brumby, Steven P.; Guzder-Williams, Brookie; Birch, Tanya",
+  "abstract": "Abstract Unlike satellite images, which are typically acquired and processed in near-real-time, global land cover products have historically been produced on an annual basis, often with substantial lag times between image processing and dataset release. We developed a new automated approach for globally consistent, high resolution, near real-time (NRT) land use land cover (LULC) classification leveraging deep learning on 10 m Sentinel-2 imagery. We utilize a highly scalable cloud-based system to apply this approach and provide an open, continuous feed of LULC predictions in parallel with Sentinel-2 acquisitions. This first-of-its-kind NRT product, which we collectively refer to as Dynamic World, accommodates a variety of user needs ranging from extremely up-to-date LULC data to custom global composites representing user-specified date ranges. Furthermore, the continuous nature of the product’s outputs enables refinement, extension, and even redefinition of the LULC classification. In combination, these unique attributes enable unprecedented flexibility for a diverse community of users across a variety of disciplines.",
+  "src": "crossref"
+ },
+ "10.3390/rs9010095": {
+  "title": "Operational High Resolution Land Cover Map Production at the Country Scale Using Satellite Image Time Series",
+  "year": 2017,
+  "venue": "Remote Sensing",
+  "authors": "Inglada, Jordi; Vincent, Arthur; Arias, Marcela; Tardy, Benjamin",
+  "abstract": "A detailed and accurate knowledge of land cover is crucial for many scientific and operational applications, and as such, it has been identified as an Essential Climate Variable. This accurate knowledge needs frequent updates. This paper presents a methodology for the fully automatic production of land cover maps at country scale using high resolution optical image time series which is based on supervised classification and uses existing databases as reference data for training and validation. The originality of the approach resides in the use of all available image data, a simple pre-processing step leading to a homogeneous set of acquisition dates over the whole area and the use of a supervised classifier which is robust to errors in the reference data. The produced maps have a kappa coefficient of 0.86 with 17 land cover classes. The processing is efficient, allowing a fast delivery of the maps after the acquisition of the image data, does not need expensive field surveys for model calibration and validation, nor human operators for decision making, and uses open and freely available imagery. The land cover maps are provided with a confidence map which gives information at the pixel level about the expected quality of the result.",
+  "src": "crossref"
+ },
+ "10.1016/j.isprsjprs.2016.03.008": {
+  "title": "Optical remotely sensed time series data for land cover classification: A review",
+  "year": 2016,
+  "venue": "ISPRS Journal of Photogrammetry and Remote Sensing",
+  "authors": "Gómez, Cristina; White, Joanne C.; Wulder, Michael A.",
+  "abstract": "Abstract Accurate land cover information is required for science, monitoring, and reporting. Land cover changes naturally over time, as well as a result of anthropogenic activities. Monitoring and mapping of land cover and land cover change in a consistent and robust manner over large areas is made possible with Earth Observation (EO) data. Land cover products satisfying a range of science and policy information needs are currently produced periodically at different spatial and temporal scales. The increased availability of EO data—particularly from the Landsat archive (and soon to be augmented with Sentinel-2 data)—coupled with improved computing and storage capacity with novel image compositing approaches, have resulted in the availability of annual, large-area, gap-free, surface reflectance data products. In turn, these data products support the development of annual land cover products that can be both informed and constrained by change detection outputs. The inclusion of time series change in the land cover mapping process provides information on class stability and informs on logical class transitions (both temporally and categorically). In this review, we present the issues and opportunities associated with generating and validating time-series informed annual, large-area, land cover products, and identify methods suited to incorporating time series information and other novel inputs for land cover characterization.",
+  "src": "semanticscholar"
+ },
+ "10.3390/rs8010070": {
+  "title": "A Review of the Application of Optical and Radar Remote Sensing Data Fusion to Land Use Mapping and Monitoring",
+  "year": 2016,
+  "venue": "Remote Sensing",
+  "authors": "Joshi, Neha; Baumann, Matthias; Ehammer, Andrea; Fensholt, Rasmus",
+  "abstract": "The wealth of complementary data available from remote sensing missions can hugely aid efforts towards accurately determining land use and quantifying subtle changes in land use management or intensity. This study reviewed 112 studies on fusing optical and radar data, which offer unique spectral and structural information, for land cover and use assessments. Contrary to our expectations, only 50 studies specifically addressed land use, and five assessed land use changes, while the majority addressed land cover. The advantages of fusion for land use analysis were assessed in 32 studies, and a large majority (28 studies) concluded that fusion improved results compared to using single data sources. Study sites were small, frequently 300–3000 km 2 or individual plots, with a lack of comparison of results and accuracies across sites. Although a variety of fusion techniques were used, pre-classification fusion followed by pixel-level inputs in traditional classification algorithms (e.g., Gaussian maximum likelihood classification) was common, but often without a concrete rationale on the applicability of the method to the land use theme being studied. Progress in this field of research requires the development of robust techniques of fusion to map the intricacies of land uses and changes therein and systematic procedures to assess the benefits of fusion over larger spatial scales.",
+  "src": "crossref"
+ },
+ "10.1016/j.rse.2018.09.002": {
+  "title": "The Harmonized Landsat and Sentinel-2 surface reflectance data set",
+  "year": 2018,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Claverie, Martin; Ju, Junchang; Masek, Jeffrey G.; Dungan, Jennifer L.",
+  "abstract": "Abstract The Harmonized Landsat and Sentinel-2 (HLS) project is a NASA initiative aiming to produce a Virtual Constellation (VC) of surface reflectance (SR) data acquired by the Operational Land Imager (OLI) and Multi-Spectral Instrument (MSI) aboard Landsat 8 and Sentinel-2 remote sensing satellites, respectively. The HLS products are based on a set of algorithms to obtain seamless products from both sensors (OLI and MSI): atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, bidirectional reflectance distribution function normalization and spectral bandpass adjustment. Three products are derived from the HLS processing chain: (i) S10: full resolution MSI SR at 10 m, 20 m and 60 m spatial resolutions; (ii) S30: a 30 m MSI Nadir BRDF (Bidirectional Reflectance Distribution Function)-Adjusted Reflectance (NBAR); (iii) L30: a 30 m OLI NBAR. All three products are processed for every Level-1 input products from Landsat 8/OLI (L1T) and Sentinel-2/MSI (L1C). As of version 1.3, the HLS data set covers 10.35 million km2 and spans from first Landsat 8 data (2013); Sentinel-2 data spans from October 2015. The L30 and S30 show a good consistency with coarse spatial resolution products, in particular MODIS Collection 6 MCD09CMG products (overall deviations do not exceed 11%) that are used as a reference for quality assurance. The spatial co-registration of the HLS is improved compared to original Landsat 8 L1T and Sentinel-2A L1C products, for which misregistration issues between multi-temporal data are known. In particular, the resulting computed circular errors at 90% for the HLS product are 6.2 m and 18.8 m, for S10 and L30 products, respectively. The main known issue of the current data set remains the Sentinel-2 cloud mask with many cloud detection omissions. The cross-comparison with MODIS was used to flag products with most evident non-detected clouds. A time series outlier filtering approach is suggested to detect remaining clouds. Finally, several time series are presented to highlight the high potential of the HLS data set for crop monitoring.",
+  "src": "semanticscholar"
+ },
+ "10.1016/j.rse.2019.02.015": {
+  "title": "Current status of Landsat program, science, and applications",
+  "year": 2019,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Wulder, Michael A.; Loveland, Thomas R.; Roy, David P.; Crawford, Christopher J.",
+  "abstract": "Formal planning and development of what became the first Landsat satellite commenced over 50 years ago in 1967. Now, having collected earth observation data for well over four decades since the 1972 launch of Landsat-1, the Landsat program is increasingly complex and vibrant. Critical programmatic elements are ensuring the continuity of high quality measurements for scientific and operational investigations, including ground systems, acquisition planning, data archiving and management, and provision of analysis ready data products. Free and open access to archival and new imagery has resulted in a myriad of innovative applications and novel scientific insights. The planning of future compatible satellites in the Landsat series, which maintain continuity while incorporating technological advancements, has resulted in an increased operational use of Landsat data. Governments and international agencies, among others, can now build an expectation of Landsat data into a given operational data stream. International programs and conventions (e.g., deforestation monitoring, climate change mitigation) are empowered by access to systematically collected and calibrated data with expected future continuity further contributing to the existing multi-decadal record. The increased breadth and depth of Landsat science and applications have accelerated following the launch of Landsat-8, with significant improvements in data quality. Herein, we describe the programmatic developments and institutional context for the Landsat program and the unique ability of Landsat to meet the needs of national and international programs. We then present the key trends in Landsat science that underpin many of the recent scientific and application developments and follow-up with more detailed thematically organized summaries. The historical context offered by archival imagery combined with new imagery allows for the development of time series algorithms that can produce information on trends and dynamics. Landsat-8 has figured prominently in these recent developments, as has the improved understanding and calibration of historical data. Following the communication of the state of Landsat science, an outlook for future launches and envisioned programmatic developments are presented. Increased linkages between satellite programs are also made possible through an expectation of future mission continuity, such as developing a virtual constellation with Sentinel-2. Successful science and applications developments create a positive feedback loop—justifying and encouraging current and future programmatic support for Landsat.",
+  "src": "openalex"
+ },
+ "10.1007/s00168-007-0138-2": {
+  "title": "Comparing the input, output, and validation maps for several models of land change",
+  "year": 2007,
+  "venue": "The Annals of Regional Science",
+  "authors": "Pontius, Robert Gilmore; Boersma, Wideke; Castella, Jean-Christophe; Clarke, Keith",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.ecolmodel.2004.05.010": {
+  "title": "Useful techniques of validation for spatially explicit land-change models",
+  "year": 2004,
+  "venue": "Ecological Modelling",
+  "authors": "Pontius, Robert Gilmore; Huffaker, Diana; Denman, Kevin",
+  "abstract": "TLDR: A new criterion called the Null Resolution is introduced, which is the spatial resolution at which the predictive model is as accurate as the Null model, and is applied to assess an LUCC model called Geomod.",
+  "src": "s2-tldr"
+ },
+ "10.1007/s00267-002-2630-x": {
+  "title": "Modeling the Spatial Dynamics of Regional Land Use: The CLUE-S Model",
+  "year": 2002,
+  "venue": "Environmental Management",
+  "authors": "VERBURG, PETER H.; SOEPBOER, WELMOED; VELDKAMP, A.; LIMPIADA, RAMIL",
+  "abstract": "TLDR: A dynamic, spatially explicit, land-use change model is presented for the regional scale: CLUE-S that explicitly addresses the hierarchical organization of land use systems, spatial connectivity between locations and stability.",
+  "src": "s2-tldr"
+ },
+ "10.1007/s10980-009-9355-7": {
+  "title": "Combining top-down and bottom-up dynamics in land use modeling: exploring the future of abandoned farmlands in Europe with the Dyna-CLUE model",
+  "year": 2009,
+  "venue": "Landscape Ecology",
+  "authors": "Verburg, Peter H.; Overmars, Koen P.",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.envsoft.2013.09.010": {
+  "title": "Inductive pattern-based land use/cover change models: A comparison of four software packages",
+  "year": 2014,
+  "venue": "Environmental Modelling &amp; Software",
+  "authors": "Mas, Jean-François; Kolb, Melanie; Paegelow, Martin; Camacho Olmedo, María Teresa",
+  "abstract": "Land use/cover change (LUCC), as an important factor in global change, is a topic that has recently received considerable attention in the prospective modeling domain. There are many approaches and software packages for modeling LUCC, many of them are empirical approaches based on past LUCC such as CLUE, DINAMICA, CA_MARKOV and Land Change Modeler (both available in IDRISI). This study reviews the possibilities and the limits of these four modeling software packages. First, a revision of the methods and tools available for each model was performed, taking into account how the models carry out the different procedures involved in the modeling process: quantity of change estimate, change potential evaluation, spatial allocation of change, reproduction of temporal and spatial patterns, model evaluation and advanced modeling options. Additional considerations, such as flexibility, user friendliness, were also taken into account. Then, the four models were applied to a virtual case study to illustrate the previous descriptions with a typical LUCC scenario that consists of four processes of change (conversion of forest to two different types of crops, crop abandonment and urban sprawl) that follow different spatial patterns and are conditioned by different drivers. The outputs were compared to assess the quantity of change estimates, the change potential and the simulated prospective maps. Finally, we discussed some basic criteria to define a \"good\" model.",
+  "src": "semanticscholar"
+ },
+ "10.1016/j.cosust.2013.07.012": {
+  "title": "Opportunities to improve impact, integration, and evaluation of land change models",
+  "year": 2013,
+  "venue": "Current Opinion in Environmental Sustainability",
+  "authors": "Brown, Daniel G; Verburg, Peter H; Pontius, Robert Gilmore; Lange, Mark D",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.envsoft.2016.04.017": {
+  "title": "A review of current calibration and validation practices in land-change modeling",
+  "year": 2016,
+  "venue": "Environmental Modelling &amp; Software",
+  "authors": "van Vliet, Jasper; Bregt, Arnold K.; Brown, Daniel G.; van Delden, Hedwig",
+  "abstract": null,
+  "src": null
+ },
+ "10.1007/s10980-009-9433-x": {
+  "title": "Derivation of a yearly transition probability matrix for land-use dynamics and its applications",
+  "year": 2009,
+  "venue": "Landscape Ecology",
+  "authors": "Takada, Takenori; Miyamoto, Asako; Hasegawa, Shigeaki F.",
+  "abstract": null,
+  "src": null
+ },
+ "10.1080/13658810210137004": {
+  "title": "Neural-network-based cellular automata for simulating multiple land use changes using GIS",
+  "year": 2002,
+  "venue": "International Journal of Geographical Information Science",
+  "authors": "Li, Xia; Yeh, Anthony Gar-On",
+  "abstract": "This paper presents a new method to simulate the evolution of multiple land uses based on the integration of neural networks and cellular automata using GIS. Simulation of multiple land use changes using cellular automata (CA) is difficult because numerous spatial variables and parameters have to be utilized. Conventional CA models have problems in defining simulation parameter values, transition rules and model structures. In this paper, a three-layer neural network with multiple output neurons is designed to calculate conversion probabilities for competing multiple land uses. The model involves iterative looping of the neural network to simulate gradual land use conversion processes. Spatial variables are not deterministic because they are dynamically updated at the end of each loop. A GIS is used to obtain site attributes and training data, and to provide spatial functions for constructing the neural network. The parameter values for modelling are automatically generated by the training procedure of neural networks. The model has been successfully applied to the simulation of multiple land use changes in a fast growing area in southern China.",
+  "src": "openalex"
+ },
+ "10.1016/j.apgeog.2008.10.002": {
+  "title": "Rural sustainability under threat in Zimbabwe – Simulation of future land use/cover changes in the Bindura district based on the Markov-cellular automata model",
+  "year": 2009,
+  "venue": "Applied Geography",
+  "authors": "Kamusoko, Courage; Aniya, Masamu; Adi, Bongo; Manjoro, Munyaradzi",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.ecolmodel.2011.09.009": {
+  "title": "Modeling urban land use change by the integration of cellular automaton and Markov model",
+  "year": 2011,
+  "venue": "Ecological Modelling",
+  "authors": "Guan, DongJie; Li, HaiFeng; Inohae, Takuro; Su, Weici",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.jag.2016.07.007": {
+  "title": "The simulation and prediction of spatio-temporal urban growth trends using cellular automata models: A review",
+  "year": 2016,
+  "venue": "International Journal of Applied Earth Observation and Geoinformation",
+  "authors": "Aburas, Maher Milad; Ho, Yuek Ming; Ramli, Mohammad Firuz; Ash’aari, Zulfa Hanan",
+  "abstract": "TLDR: The results of the review confirm that the CA model is one of the strongest models for simulating urban growth patterns owing to its structure, simplicity, and possibility of evolution.",
+  "src": "s2-tldr"
+ },
+ "10.1016/j.landurbplan.2010.03.001": {
+  "title": "Cellular automata models for the simulation of real-world urban processes: A review and analysis",
+  "year": 2010,
+  "venue": "Landscape and Urban Planning",
+  "authors": "Santé, Inés; García, Andrés M.; Miranda, David; Crecente, Rafael",
+  "abstract": "TLDR: A review of urban CA models applied to real-world cases is provided, along with an analysis of their capabilities and limitations, and the review and classification of CA models based on the main characteristics of the models has allowed for theAnalysis of their strengths and weaknesses.",
+  "src": "s2-tldr"
+ },
+ "10.3390/ijgi4020447": {
+  "title": "Simulating Urban Growth Using a Random Forest-Cellular Automata (RF-CA) Model",
+  "year": 2015,
+  "venue": "ISPRS International Journal of Geo-Information",
+  "authors": "Kamusoko, Courage; Gamba, Jonah",
+  "abstract": "Sustainable urban planning and management require reliable land change models, which can be used to improve decision making. The objective of this study was to test a random forest-cellular automata (RF-CA) model, which combines random forest (RF) and cellular automata (CA) models. The Kappa simulation (KSimulation), figure of merit, and components of agreement and disagreement statistics were used to validate the RF-CA model. Furthermore, the RF-CA model was compared with support vector machine cellular automata (SVM-CA) and logistic regression cellular automata (LR-CA) models. Results show that the RF-CA model outperformed the SVM-CA and LR-CA models. The RF-CA model had a Kappa simulation (KSimulation) accuracy of 0.51 (with a figure of merit statistic of 47%), while SVM-CA and LR-CA models had a KSimulation accuracy of 0.39 and −0.22 (with figure of merit statistics of 39% and 6%), respectively. Generally, the RF-CA model was relatively accurate at allocating “non-built-up to built-up” changes as reflected by the correct “non-built-up to built-up” components of agreement of 15%. The performance of the RF-CA model was attributed to the relatively accurate RF transition potential maps. Therefore, this study highlights the potential of the RF-CA model for simulating urban growth.",
+  "src": "crossref"
+ },
+ "10.1016/j.scitotenv.2018.07.302": {
+  "title": "A Random Forest-Cellular Automata modelling approach to explore future land use/cover change in Attica (Greece), under different socio-economic realities and scales",
+  "year": 2019,
+  "venue": "Science of The Total Environment",
+  "authors": "Gounaridis, Dimitrios; Chorianopoulos, Ioannis; Symeonakis, Elias; Koukoulas, Sotirios",
+  "abstract": "This paper explores potential future land use/cover (LUC) dynamics in the Attica region, Greece, under three distinct economic performance scenarios. During the last decades, Attica underwent a significant and predominantly unregulated process of urban growth, due to a substantial increase in housing demand coupled with limited land use planning controls. However, the recent financial crisis affected urban growth trends considerably. This paper uses the observed LUC trends between 1991 and 2016 to sketch three divergent future scenarios of economic development. The observed LUC trends are then analysed using 27 dynamic, biophysical, socio-economic, terrain and proximity-based factors, to generate transition potential maps, implementing a Random Forests (RF) regression modelling approach. Scenarios are projected to 2040 by implementing a spatially explicit Cellular Automata (CA) model. The resulting maps are subjected to a multiple resolution sensitivity analysis to assess the effect of spatial resolution of the input data to the model outputs. Findings show that, under the current setting of an underdeveloped land use planning apparatus, a long-term scenario of high economic growth will increase built-up surfaces in the region by almost 24%, accompanied by a notable decrease in natural areas and cropland. Interestingly, in the case that the currently negative economic growth rates persist, artificial surfaces in the region are still expected to increase by approximately 7.5% by 2040.",
+  "src": "semanticscholar"
+ },
+ "10.1088/1748-9326/aabd42": {
+  "title": "Global patterns of current and future road infrastructure",
+  "year": 2018,
+  "venue": "Environmental Research Letters",
+  "authors": "Meijer, Johan R; Huijbregts, Mark A J; Schotten, Kees C G J; Schipper, Aafke M",
+  "abstract": "Georeferenced information on road infrastructure is essential for spatial planning, socio-economic assessments and environmental impact analyses. Yet current global road maps are typically outdated or characterized by spatial bias in coverage. In the Global Roads Inventory Project we gathered, harmonized and integrated nearly 60 geospatial datasets on road infrastructure into a global roads dataset. The resulting dataset covers 222 countries and includes over 21 million km of roads, which is two to three times the total length in the currently best available country-based global roads datasets. We then related total road length per country to country area, population density, GDP and OECD membership, resulting in a regression model with adjusted R2 of 0.90, and found that that the highest road densities are associated with densely populated and wealthier countries. Applying our regression model to future population densities and GDP estimates from the Shared Socioeconomic Pathway (SSP) scenarios, we obtained a tentative estimate of 3.0–4.7 million km additional road length for the year 2050. Large increases in road length were projected for developing nations in some of the world’s last remaining wilderness areas, such as the Amazon, the Congo basin and New Guinea. This highlights the need for accurate spatial road datasets to underpin strategic spatial planning in order to reduce the impacts of roads in remaining pristine ecosystems.",
+  "src": "semanticscholar"
+ },
+ "10.1038/nature20584": {
+  "title": "High-resolution mapping of global surface water and its long-term changes",
+  "year": 2016,
+  "venue": "Nature",
+  "authors": "Pekel, Jean-François; Cottam, Andrew; Gorelick, Noel; Belward, Alan S.",
+  "abstract": "TLDR: Using three million Landsat satellite images, this globally consistent, validated data set shows that impacts of climate change and climate oscillations on surface water occurrence can be measured and that evidence can be gathered to show how surface water is altered by human activities.",
+  "src": "s2-tldr"
+ },
+ "10.1038/sdata.2017.4": {
+  "title": "WorldPop, open data for spatial demography",
+  "year": 2017,
+  "venue": "Scientific Data",
+  "authors": "Tatem, Andrew J.",
+  "abstract": "Abstract High resolution, contemporary data on human population distributions, their characteristics and changes over time are a prerequisite for the accurate measurement of the impacts of population growth, for monitoring changes and for planning interventions. WorldPop aims to meet these needs through the provision of detailed and open access spatial demographic datasets built using transparent approaches. The Scientific Data WorldPop collection brings together descriptor papers on these datasets and is introduced here.",
+  "src": "crossref"
+ },
+ "10.5194/essd-10-219-2018": {
+  "title": "Gross and net land cover changes in the main plant functional types derived from the annual ESA CCI land cover maps (1992–2015)",
+  "year": 2018,
+  "venue": "Earth System Science Data",
+  "authors": "Li, Wei; MacBean, Natasha; Ciais, Philippe; Defourny, Pierre",
+  "abstract": "Land-use and land-cover change (LULCC) impacts local energy and water balance and contributes on global scale to a net carbon emission to the atmosphere. The newly released annual ESA CCI (climate change initiative) land cover maps provide continuous land cover changes at 300 m resolution from 1992 to 2015, and can be used in land surface models (LSMs) to simulate LULCC effects on carbon stocks and on surface energy budgets. Here we investigate the absolute areas and gross and net changes in different plant functional types (PFTs) derived from ESA CCI products. The results are compared with other datasets. Global areas of forest, cropland and grassland PFTs from ESA are 30.4, 19.3 and 35.7 million km 2 in the year 2000. The global forest area is lower than that from LUH2v2h (Hurtt et al., 2011), Hansen et al. (2013) or Houghton and Nassikas (2017) while cropland area is higher than LUH2v2h (Hurtt et al., 2011), in which cropland area is from HYDE 3.2 (Klein Goldewijk et al., 2016). Gross forest loss and gain during 1992–2015 are 1.5 and 0.9 million km 2 respectively, resulting in a net forest loss of 0.6 million km 2 , mainly occurring in South and Central America. The magnitudes of gross changes in forest, cropland and grassland PFTs in the ESA CCI are smaller than those in other datasets. The magnitude of global net cropland gain for the whole period is consistent with HYDE 3.2 (Klein Goldewijk et al., 2016), but most of the increases happened before 2004 in ESA and after 2007 in HYDE 3.2. Brazil, Bolivia and Indonesia are the countries with the largest net forest loss from 1992 to 2015, and the decreased areas are generally consistent with those from Hansen et al. (2013) based on Landsat 30 m resolution images. Despite discrepancies compared to other datasets, and uncertainties in converting into PFTs, the new ESA CCI products provide the first detailed long-term time series of land-cover change and can be implemented in LSMs to characterize recent carbon dynamics, and in climate models to simulate land-cover change feedbacks on climate. The annual ESA CCI land cover products can be downloaded from http://maps.elie.ucl.ac.be/CCI/viewer/download.php (Land Cover Maps – v2.0.7; see details in Sect. 5). The PFT map translation protocol and an example in 2000 can be downloaded from https://doi.org/10.5281/zenodo.834229. The annual ESA CCI PFT maps from 1992 to 2015 at 0.5∘×0.5∘ resolution can also be downloaded from https://doi.org/10.5281/zenodo.1048163.",
+  "src": "crossref"
+ },
+ "10.1073/pnas.1211658109": {
+  "title": "Global forecasts of urban expansion to 2030 and direct impacts on biodiversity and carbon pools",
+  "year": 2012,
+  "venue": "Proceedings of the National Academy of Sciences",
+  "authors": "Seto, Karen C.; Güneralp, Burak; Hutyra, Lucy R.",
+  "abstract": "Urban land-cover change threatens biodiversity and affects ecosystem productivity through loss of habitat, biomass, and carbon storage. However, despite projections that world urban populations will increase to nearly 5 billion by 2030, little is known about future locations, magnitudes, and rates of urban expansion. Here we develop spatially explicit probabilistic forecasts of global urban land-cover change and explore the direct impacts on biodiversity hotspots and tropical carbon biomass. If current trends in population density continue and all areas with high probabilities of urban expansion undergo change, then by 2030, urban land cover will increase by 1.2 million km 2 , nearly tripling the global urban land area circa 2000. This increase would result in considerable loss of habitats in key biodiversity hotspots, with the highest rates of forecasted urban growth to take place in regions that were relatively undisturbed by urban development in 2000: the Eastern Afromontane, the Guinean Forests of West Africa, and the Western Ghats and Sri Lanka hotspots. Within the pan-tropics, loss in vegetation biomass from areas with high probability of urban expansion is estimated to be 1.38 PgC (0.05 PgC yr −1 ), equal to ∼5% of emissions from tropical deforestation and land-use change. Although urbanization is often considered a local issue, the aggregate global impacts of projected urban expansion will require significant policy changes to affect future growth trajectories to minimize global biodiversity and vegetation carbon losses.",
+  "src": "crossref"
+ },
+ "10.1016/j.progress.2011.04.001": {
+  "title": "The dimensions of global urban expansion: Estimates and projections for all countries, 2000–2050",
+  "year": 2011,
+  "venue": "Progress in Planning",
+  "authors": "Angel, Shlomo; Parent, Jason; Civco, Daniel L.; Blei, Alexander",
+  "abstract": null,
+  "src": null
+ },
+ "10.1016/j.jenvman.2014.05.014": {
+  "title": "Urbanization and agricultural land loss in India: Comparing satellite estimates with census data",
+  "year": 2015,
+  "venue": "Journal of Environmental Management",
+  "authors": "Pandey, Bhartendu; Seto, Karen C.",
+  "abstract": "TLDR: The results suggest an increase in the conversion of agricultural land going into the future given that the preponderance of India's urban population growth has yet to occur, and the amount of Agricultural land converted has been increasing steadily since 2006.",
+  "src": "s2-tldr"
+ },
+ "10.3390/rs70302401": {
+  "title": "Development of Decadal (1985–1995–2005) Land Use and Land Cover Database for India",
+  "year": 2015,
+  "venue": "Remote Sensing",
+  "authors": "Roy, Parth; Roy, Arijit; Joshi, Pawan; Kale, Manish",
+  "abstract": "India has experienced significant Land-Use and Land-Cover Change (LULCC) over the past few decades. In this context, careful observation and mapping of LULCC using satellite data of high to medium spatial resolution is crucial for understanding the long-term usage patterns of natural resources and facilitating sustainable management to plan, monitor and evaluate development. The present study utilizes the satellite images to generate national level LULC maps at decadal intervals for 1985, 1995 and 2005 using onscreen visual interpretation techniques with minimum mapping unit of 2.5 hectares. These maps follow the classification scheme of the International Geosphere Biosphere Programme (IGBP) to ensure compatibility with other global/regional LULC datasets for comparison and integration. Our LULC maps with more than 90% overall accuracy highlight the changes prominent at regional level, i.e., loss of forest cover in central and northeast India, increase of cropland area in Western India, growth of peri-urban area, and relative increase in plantations. We also found spatial correlation between the cropping area and precipitation, which in turn confirms the monsoon dependent agriculture system in the country. On comparison with the existing global LULC products (GlobCover and MODIS), it can be concluded that our dataset has captured the maximum cumulative patch diversity frequency indicating the detailed representation that can be attributed to the on-screen visual interpretation technique. Comparisons with global LULC products (GlobCover and MODIS) show that our dataset captures maximum landscape diversity, which is partly attributable to the on-screen visual interpretation techniques. We advocate the utility of this database for national and regional studies on land dynamics and climate change research. The database would be updated to 2015 as a continuing effort of this study.",
+  "src": "crossref"
+ },
+ "10.5194/gmd-8-3215-2015": {
+  "title": "An open and extensible framework for spatially explicit land use change modelling: the lulcc R package",
+  "year": 2015,
+  "venue": "Geoscientific Model Development",
+  "authors": "Moulds, S.; Buytaert, W.; Mijic, A.",
+  "abstract": "Abstract. We present the lulcc software package, an object-oriented framework for land use change modelling written in the R programming language. The contribution of the work is to resolve the following limitations associated with the current land use change modelling paradigm: (1) the source code for model implementations is frequently unavailable, severely compromising the reproducibility of scientific results and making it impossible for members of the community to improve or adapt models for their own purposes; (2) ensemble experiments to capture model structural uncertainty are difficult because of fundamental differences between implementations of alternative models; and (3) additional software is required because existing applications frequently perform only the spatial allocation of change. The package includes a stochastic ordered allocation procedure as well as an implementation of the CLUE-S algorithm. We demonstrate its functionality by simulating land use change at the Plum Island Ecosystems site, using a data set included with the package. It is envisaged that lulcc will enable future model development and comparison within an open environment.",
+  "src": "crossref"
+ },
+ "10.1038/s41597-020-00675-z": {
+  "title": "Harmonised LUCAS in-situ land cover and use database for field surveys from 2006 to 2018 in the European Union",
+  "year": 2020,
+  "venue": "Scientific Data",
+  "authors": "d’Andrimont, Raphaël; Yordanov, Momchil; Martinez-Sanchez, Laura; Eiselt, Beatrice",
+  "abstract": "Abstract Accurately characterizing land surface changes with Earth Observation requires geo-located ground truth. In the European Union (EU), a tri-annual surveyed sample of land cover and land use has been collected since 2006 under the Land Use/Cover Area frame Survey (LUCAS). A total of 1351293 observations at 651780 unique locations for 106 variables along with 5.4 million photos were collected during five LUCAS surveys. Until now, these data have never been harmonised into one database, limiting full exploitation of the information. This paper describes the LUCAS point sampling/surveying methodology, including collection of standard variables such as land cover, environmental parameters, and full resolution landscape and point photos, and then describes the harmonisation process. The resulting harmonised database is the most comprehensive in-situ dataset on land cover and use in the EU. The database is valuable for geo-spatial and statistical analysis of land use and land cover change. Furthermore, its potential to provide multi-temporal in-situ data will be enhanced by recent computational advances such as deep learning.",
+  "src": "crossref"
+ },
+ "10.1515/jlecol-2017-0017": {
+  "title": "Application of Earth Observation Data for Estimation of Changes in Land Trajectories in Varanasi District, India",
+  "year": 2018,
+  "venue": "Journal of Landscape Ecology",
+  "authors": "Singh, Sunita; Rai, Praveen Kumar",
+  "abstract": "Abstract Digital change detection is the process that helps in shaping the changes associated with land use land cover (LULC) properties with reference to geo-registered multi-temporal remote sensing data. In this study different methods of analyzing satellite images are presented, with the aim to identify changes in land cover in a certain period of time (1980-2016). The methods represented in this study are vegetation indices, image differencing and supervised classification. These methods gave different results in terms of land cover area. Urban expansion has brought serious losses of agriculture land, vegetation and water bodies. The present study demonstrates changes in land trajectories of Varanasi district, India using Landsat MSS (1980), TM (1990 and 2010), ETM+ (2000) and Landsat-8 OLI data (2016). The LULC classes in the study area are divided into eight categories using supervised classification method. Normalized Difference Vegetation Index (NDVI) and Soil Adjusted Vegetation Index (SAVI) are also calculated to estimate the changes in LULC classes during these time periods. Major changes are seen from 2000 to 2016 for the built-up, agriculture land, water bodies and wasteland.",
+  "src": "crossref"
+ },
+ "10.1007/s12518-018-0223-5": {
+  "title": "Prediction of spatio-temporal land use/land cover dynamics in rapidly developing Varanasi district of Uttar Pradesh, India, using geospatial approach: a comparison of hybrid models",
+  "year": 2018,
+  "venue": "Applied Geomatics",
+  "authors": "Mishra, Varun Narayan; Rai, Praveen Kumar; Prasad, Rajendra; Punia, Milap",
+  "abstract": "TLDR: The findings of this study exhibited the constant but overall increase of built up area and a considerable reduction in agricultural land and the potentiality of MLP-MC hybrid model for better understanding of spatio-temporal dynamics and predicting future landsacpe scenario in Varanasi district of Uttar Pradesh, India.",
+  "src": "s2-tldr"
+ },
+ "10.1007/s40710-015-0062-x": {
+  "title": "Predicting Spatial and Decadal LULC Changes Through Cellular Automata Markov Chain Models Using Earth Observation Datasets and Geo-information",
+  "year": 2015,
+  "venue": "Environmental Processes",
+  "authors": "Singh, Sudhir Kumar; Mustak, Sk.; Srivastava, Prashant K.; Szabó, Szilárd",
+  "abstract": null,
+  "src": null
+ },
+ "10.3390/su162310722": {
+  "title": "Analysis and Future Projections of Land Use and Land Cover Changes in the Hindon River Basin, India Using the CA-Markov Model",
+  "year": 2024,
+  "venue": "Sustainability",
+  "authors": "Singh, Ritu; Rai, Suresh Chand; Mishra, Prabuddh Kumar; Abdelrahman, Kamal",
+  "abstract": "Land use and land cover change is a significant issue in emerging countries. The enormous rate of population growth, industrialization, and urbanization is responsible for these developments. Monitoring and mapping of changes in land cover and land use is essential to the sustainable development and management of the area. The study attempts to track changes in LULC pattern for the years 2002, 2013, and 2023 in the Hindon River Basin, a major tributary of the Yamuna River, using remote sensing and geographic information system techniques. Images obtained from Landsat data were employed to extract historical land use and land cover maps. Additionally, the CA-Markov model was implemented to forecast future land use and land cover patterns. This study examines the historical and predicted LULC in the area. Field observations and site-specific interviews were used to confirm and determine the ground realities. High-resolution images were used to evaluate the accuracy of the classified map. According to the results, the agricultural land decreased from 60.98% in 2002 to 54.70% in 2050, while built-up areas increased from 12.95% to 21.25% during the same period. By 2050, vegetation is predicted to increase to 2.58%, whereas surface water, fallow land, barren areas, and dry water bodies are predicted to decrease to 0.58%, 18.87%, 1.20%, and 0.83%, respectively. The rapid pace of urbanization is facilitating economic growth within the country; however, this development is occurring at the expense of the natural landscape, which subsequently diminishes the overall quality of human life. In order to maintain sustainable development in the Hindon Basin, proper urban planning is essential. Important policy implications for the sustainable management of land use and conservation in the Hindon River basin are highlighted by the study’s research and findings.",
+  "src": "crossref"
+ },
+ "10.1002/9781118295861.ch3": {
+  "title": "Confronting Suburbanization in Ljubljana",
+  "year": 2014,
+  "venue": "Confronting Suburbanization",
+  "authors": "Pichler‐Milanović, Nataša",
+  "abstract": "In Slovenia there is no official translation for the phrase urban sprawl. Yet such patterns of development, mostly associated with the construction of detached single-family dwellings by individual households, have characterized the suburban periphery of Slovenian towns for several decades prior to the transition of the country's economy to a market-based system in the early 1990s. As in many other countries of Eastern Europe after World War II, in Slovenia too the drive for industrialization became a development priority of the highest order. The corresponding policy spurred an intensive process of urbanization, which influenced the growth of larger towns as dominant locations of economic activities. The success of the political, economic, and institutional reforms in Slovenia following the collapse of the socialist regime has impacted strongly the transformation of Ljubljana's urban region.",
+  "src": "openalex"
+ },
+ "10.1016/j.rse.2017.06.031": {
+  "title": "Google Earth Engine: Planetary-scale geospatial analysis for everyone",
+  "year": 2017,
+  "venue": "Remote Sensing of Environment",
+  "authors": "Gorelick, Noel; Hancher, Matt; Dixon, Mike; Ilyushchenko, Simon",
+  "abstract": "Abstract Google Earth Engine is a cloud-based platform for planetary-scale geospatial analysis that brings Google's massive computational capabilities to bear on a variety of high-impact societal issues including deforestation, drought, disaster, disease, food security, water management, climate monitoring and environmental protection. It is unique in the field as an integrated platform designed to empower not only traditional remote sensing scientists, but also a much wider audience that lacks the technical capacity needed to utilize traditional supercomputers or large-scale commodity cloud computing resources.",
+  "src": "semanticscholar"
+ },
+ "10.1117/12.2278218": {
+  "title": "Sen2Cor for Sentinel-2",
+  "year": 2017,
+  "venue": "Image and Signal Processing for Remote Sensing XXIII",
+  "authors": "Main-Knorn, Magdalena; Pflug, Bringfried; Louis, Jerome; Debaecker, Vincent",
+  "abstract": "In the frame of the Copernicus programme, ESA has developed and launched the Sentinel-2 optical imaging mission that delivers optical data products designed to feed downstream services mainly related to land monitoring, emergency management and security. The Sentinel-2 mission is the constellation of two polar orbiting satellites Sentinel-2A and Sentinel-2B, each one equipped with an optical imaging sensor MSI (Multi-Spectral Instrument). Sentinel-2A was launched on June 23rd, 2015 and Sentinel-2B followed on March 7th, 2017. With the beginning of the operational phase the constellation of both satellites enable image acquisition over the same area every 5 days or less. To use unique potential of the Sentinel-2 data for land applications and ensure the highest quality of scientific exploitation, accurate correction of satellite images for atmospheric effects is required. Therefore the atmospheric correction processor Sen2Cor was developed by Telespazio VEGA Deutschland GmbH on behalf of ESA. Sen2Cor is a Level-2A processor which main purpose is to correct single-date Sentinel-2 Level-1C Top-Of-Atmosphere (TOA) products from the effects of the atmosphere in order to deliver a Level-2A Bottom-Of-Atmosphere (BOA) reflectance product. Additional outputs are an Aerosol Optical Thickness (AOT) map, a Water Vapour (WV) map and a Scene Classification (SCL) map with Quality Indicators for cloud and snow probabilities. Telespazio France and DLR have teamed up in order to provide the calibration and validation of the Sen2Cor processor. Here we provide an overview over the Sentinel-2 data, processor and products. It presents some processing examples of Sen2Cor applied to Sentinel-2 data, provides up-to-date information about the Sen2Cor release status and recent validation results at the time of the SPIE Remote Sensing 2017.",
+  "src": "openalex"
+ },
+ "10.3390/rs9060584": {
+  "title": "Copernicus Sentinel-2A Calibration and Products Validation Status",
+  "year": 2017,
+  "venue": "Remote Sensing",
+  "authors": "Gascon, Ferran; Bouzinac, Catherine; Thépaut, Olivier; Jung, Mathieu",
+  "abstract": "As part of the Copernicus programme of the European Commission (EC), the European Space Agency (ESA) has developed and is currently operating the Sentinel-2 mission that is acquiring high spatial resolution optical imagery. This article provides a description of the calibration activities and the status of the mission products validation activities after one year in orbit. Measured performances, from the validation activities, cover both Top-Of-Atmosphere (TOA) and Bottom-Of-Atmosphere (BOA) products. The presented results show the good quality of the mission products both in terms of radiometry and geometry and provide an overview on next mission steps related to data quality aspects.",
+  "src": "crossref"
+ }
+}

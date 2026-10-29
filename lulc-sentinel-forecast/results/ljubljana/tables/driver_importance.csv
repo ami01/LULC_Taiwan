@@ -1,0 +1,21 @@
+variant,class_id,name,driver,importance
+RF-CA,2,Built-up,elevation,-0.00001
+RF-CA,2,Built-up,slope,-0.00013
+RF-CA,2,Built-up,dist_major_road,0.01413
+RF-CA,2,Built-up,dist_minor_road,0.00012
+RF-CA,2,Built-up,dist_rail,0.00351
+RF-CA,2,Built-up,dist_water,0.00587
+RF-CA,2,Built-up,dist_centre,-0.00068
+RF-CA,2,Built-up,log_pop,0.02163
+RF-CA,2,Built-up,dist_to_class,0.12078
+RF-CA (3 var),2,Built-up,elevation,0.05071
+RF-CA (3 var),2,Built-up,slope,0.06342
+RF-CA (3 var),2,Built-up,dist_major_road,0.12872
+RF-CA (static),2,Built-up,elevation,0.00436
+RF-CA (static),2,Built-up,slope,0.01189
+RF-CA (static),2,Built-up,dist_major_road,0.02168
+RF-CA (static),2,Built-up,dist_minor_road,0.01104
+RF-CA (static),2,Built-up,dist_rail,-0.00287
+RF-CA (static),2,Built-up,dist_water,0.00099
+RF-CA (static),2,Built-up,dist_centre,0.01762
+RF-CA (static),2,Built-up,log_pop,0.06282

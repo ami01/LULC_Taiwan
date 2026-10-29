@@ -1,0 +1,109 @@
+variant,class_id,name,driver,importance
+RF-CA,1,Water,elevation,0.00169
+RF-CA,1,Water,slope,0.00053
+RF-CA,1,Water,dist_major_road,0.00103
+RF-CA,1,Water,dist_minor_road,0.00046
+RF-CA,1,Water,dist_water,0.02876
+RF-CA,1,Water,dist_centre,0.00089
+RF-CA,1,Water,log_pop,0.00085
+RF-CA,1,Water,dist_to_class,0.02826
+RF-CA,2,Built-up,elevation,0.02080
+RF-CA,2,Built-up,slope,0.00929
+RF-CA,2,Built-up,dist_major_road,0.10181
+RF-CA,2,Built-up,dist_minor_road,0.01245
+RF-CA,2,Built-up,dist_water,0.01071
+RF-CA,2,Built-up,dist_centre,0.00987
+RF-CA,2,Built-up,log_pop,0.06933
+RF-CA,2,Built-up,dist_to_class,0.07739
+RF-CA,3,Cropland,elevation,0.06661
+RF-CA,3,Cropland,slope,0.04873
+RF-CA,3,Cropland,dist_major_road,0.02878
+RF-CA,3,Cropland,dist_minor_road,0.04052
+RF-CA,3,Cropland,dist_water,0.03107
+RF-CA,3,Cropland,dist_centre,0.03043
+RF-CA,3,Cropland,log_pop,0.05362
+RF-CA,3,Cropland,dist_to_class,0.13349
+RF-CA,4,Tree cover,elevation,0.06681
+RF-CA,4,Tree cover,slope,0.08957
+RF-CA,4,Tree cover,dist_major_road,0.03492
+RF-CA,4,Tree cover,dist_minor_road,0.03722
+RF-CA,4,Tree cover,dist_water,0.04738
+RF-CA,4,Tree cover,dist_centre,0.03659
+RF-CA,4,Tree cover,log_pop,0.05859
+RF-CA,4,Tree cover,dist_to_class,0.10070
+RF-CA,5,Grass/shrub,elevation,0.10719
+RF-CA,5,Grass/shrub,slope,0.03841
+RF-CA,5,Grass/shrub,dist_major_road,0.05807
+RF-CA,5,Grass/shrub,dist_minor_road,0.03826
+RF-CA,5,Grass/shrub,dist_water,0.09678
+RF-CA,5,Grass/shrub,dist_centre,0.07139
+RF-CA,5,Grass/shrub,log_pop,0.05177
+RF-CA,5,Grass/shrub,dist_to_class,0.21190
+RF-CA,6,Bare,elevation,0.00587
+RF-CA,6,Bare,slope,0.00236
+RF-CA,6,Bare,dist_major_road,0.00118
+RF-CA,6,Bare,dist_minor_road,0.00225
+RF-CA,6,Bare,dist_water,0.00207
+RF-CA,6,Bare,dist_centre,0.00144
+RF-CA,6,Bare,log_pop,0.00157
+RF-CA,6,Bare,dist_to_class,0.05383
+RF-CA (3 var),1,Water,elevation,0.24166
+RF-CA (3 var),1,Water,slope,0.04205
+RF-CA (3 var),1,Water,dist_major_road,0.08279
+RF-CA (3 var),2,Built-up,elevation,0.08502
+RF-CA (3 var),2,Built-up,slope,0.08930
+RF-CA (3 var),2,Built-up,dist_major_road,0.23753
+RF-CA (3 var),3,Cropland,elevation,0.19454
+RF-CA (3 var),3,Cropland,slope,0.09840
+RF-CA (3 var),3,Cropland,dist_major_road,0.06047
+RF-CA (3 var),4,Tree cover,elevation,0.10559
+RF-CA (3 var),4,Tree cover,slope,0.18951
+RF-CA (3 var),4,Tree cover,dist_major_road,0.05589
+RF-CA (3 var),5,Grass/shrub,elevation,0.20011
+RF-CA (3 var),5,Grass/shrub,slope,0.10574
+RF-CA (3 var),5,Grass/shrub,dist_major_road,0.12670
+RF-CA (3 var),6,Bare,elevation,0.14988
+RF-CA (3 var),6,Bare,slope,0.04293
+RF-CA (3 var),6,Bare,dist_major_road,0.02038
+RF-CA (static),1,Water,elevation,0.01563
+RF-CA (static),1,Water,slope,0.00112
+RF-CA (static),1,Water,dist_major_road,0.00286
+RF-CA (static),1,Water,dist_minor_road,0.00079
+RF-CA (static),1,Water,dist_water,0.13190
+RF-CA (static),1,Water,dist_centre,0.00143
+RF-CA (static),1,Water,log_pop,0.00151
+RF-CA (static),2,Built-up,elevation,0.02912
+RF-CA (static),2,Built-up,slope,0.01622
+RF-CA (static),2,Built-up,dist_major_road,0.11949
+RF-CA (static),2,Built-up,dist_minor_road,0.01867
+RF-CA (static),2,Built-up,dist_water,0.01588
+RF-CA (static),2,Built-up,dist_centre,0.01443
+RF-CA (static),2,Built-up,log_pop,0.16917
+RF-CA (static),3,Cropland,elevation,0.11886
+RF-CA (static),3,Cropland,slope,0.06768
+RF-CA (static),3,Cropland,dist_major_road,0.03763
+RF-CA (static),3,Cropland,dist_minor_road,0.04590
+RF-CA (static),3,Cropland,dist_water,0.03622
+RF-CA (static),3,Cropland,dist_centre,0.03813
+RF-CA (static),3,Cropland,log_pop,0.10737
+RF-CA (static),4,Tree cover,elevation,0.08240
+RF-CA (static),4,Tree cover,slope,0.14394
+RF-CA (static),4,Tree cover,dist_major_road,0.04611
+RF-CA (static),4,Tree cover,dist_minor_road,0.04427
+RF-CA (static),4,Tree cover,dist_water,0.06001
+RF-CA (static),4,Tree cover,dist_centre,0.04318
+RF-CA (static),4,Tree cover,log_pop,0.07932
+RF-CA (static),5,Grass/shrub,elevation,0.20242
+RF-CA (static),5,Grass/shrub,slope,0.06686
+RF-CA (static),5,Grass/shrub,dist_major_road,0.08545
+RF-CA (static),5,Grass/shrub,dist_minor_road,0.05451
+RF-CA (static),5,Grass/shrub,dist_water,0.15998
+RF-CA (static),5,Grass/shrub,dist_centre,0.11240
+RF-CA (static),5,Grass/shrub,log_pop,0.07418
+RF-CA (static),6,Bare,elevation,0.07244
+RF-CA (static),6,Bare,slope,0.00900
+RF-CA (static),6,Bare,dist_major_road,0.00203
+RF-CA (static),6,Bare,dist_minor_road,0.00539
+RF-CA (static),6,Bare,dist_water,0.00934
+RF-CA (static),6,Bare,dist_centre,0.00164
+RF-CA (static),6,Bare,log_pop,0.00220

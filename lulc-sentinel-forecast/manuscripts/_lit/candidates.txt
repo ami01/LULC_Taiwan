@@ -1,0 +1,69 @@
+10.1016/j.rse.2011.11.026 Sentinel-2 ESA optical high-resolution mission
+10.1016/j.rse.2011.05.028 GMES Sentinel-1 mission
+10.3390/rs12142291 Sentinel-2 data for land cover/use mapping review
+10.1016/j.isprsjprs.2016.01.011 Random forest in remote sensing review
+10.1080/01431161.2018.1433343 Implementation of machine-learning classification in remote sensing applied review
+10.1016/j.isprsjprs.2010.11.001 Support vector machines in remote sensing review
+10.1145/2939672.2939785 XGBoost scalable tree boosting
+10.1023/a:1010933404324 Random forests
+10.1016/j.rse.2014.02.015 Good practices for estimating area and assessing accuracy
+10.14358/pers.70.5.627 Thematic map comparison McNemar
+10.1002/sim.1438 Analysis of clustered matched-pair data
+10.1038/s41467-020-18321-y Spatial validation reveals poor predictive performance
+10.1111/ecog.02881 Cross-validation strategies for data with temporal spatial hierarchical structure
+10.1038/s41467-022-29838-9 Machine learning-based global maps of ecological variables
+10.1080/01431161.2011.552923 Death to Kappa
+10.1109/igarss47720.2021.9553499 Global land use land cover with Sentinel 2 and deep learning
+10.3390/rs14164101 Global 10 m land use land cover datasets comparison Dynamic World WorldCover Esri
+10.3390/rs13122301 ELC10 European land cover Sentinel
+10.1038/s41597-022-01307-4 Dynamic World near real-time
+10.3390/rs9010095 Operational high resolution land cover map production at country scale
+10.1016/j.isprsjprs.2016.03.008 Optical remotely sensed time series land cover classification review
+10.3390/rs8010070 Optical and radar remote sensing data fusion land use mapping review
+10.1016/j.rse.2018.09.002 Harmonized Landsat Sentinel-2
+10.1016/j.rse.2019.02.015 Current status of Landsat program
+10.1007/s00168-007-0138-2 Comparing input output validation maps several models of land change
+10.1016/j.ecolmodel.2004.05.010 Useful techniques of validation spatially explicit land-change models
+10.1007/s00267-002-2630-x Modeling spatial dynamics regional land use CLUE-S
+10.1007/s10980-009-9355-7 Dyna-CLUE
+10.1016/j.landurbplan.2017.09.019 FLUS future land use simulation
+10.1016/j.compenvurbsys.2020.101569 PLUS model
+10.1016/j.envsoft.2013.09.010 Inductive pattern-based land use cover change models comparison four software
+10.1016/j.cosust.2013.07.012 Opportunities improve land change models
+10.1016/j.envsoft.2016.04.017 Review calibration validation land-change modeling
+10.1007/s10980-009-9433-x Yearly transition probability matrix land-use dynamics
+10.1080/13658810210137004 Neural-network-based cellular automata
+10.1016/j.apgeog.2008.10.002 Rural sustainability Zimbabwe Markov-cellular automata Bindura
+10.1016/j.ecolmodel.2011.09.009 Integration cellular automaton Markov model urban land use
+10.1016/j.jag.2016.07.007 Simulation prediction urban growth cellular automata review
+10.1016/j.landurbplan.2010.03.001 Cellular automata models real-world urban processes review
+10.3390/ijgi4020447 Random forest cellular automata RF-CA urban growth
+10.1016/j.scitotenv.2018.07.302 Random Forest Cellular Automata Attica
+10.1088/1748-9326/aabd42 Global patterns of current and future road infrastructure GRIP
+10.1038/nature20584 High-resolution mapping global surface water
+10.1038/sdata.2017.4 WorldPop open spatial demographic data
+10.5194/essd-10-219-2018 Gross and net land cover changes ESA CCI
+10.1073/pnas.1211658109 Global forecasts urban expansion 2030
+10.1016/j.progress.2011.04.001 Dimensions of global urban expansion
+10.1016/j.jenvman.2014.05.014 Urbanization agricultural land loss India satellite census
+10.3390/rs70302401 Decadal land use land cover database India
+10.5194/gmd-8-3215-2015 lulcc R package land use change modelling
+10.1038/s41597-020-00675-z Harmonised LUCAS in-situ land cover
+10.1515/jlecol-2017-0017 Varanasi land use change Singh Rai
+10.1007/s12518-018-0223-5 Varanasi CA-Markov MLP-Markov Applied Geomatics
+10.1007/s40710-015-0062-x Allahabad CA-Markov
+10.3390/su162310722 Hindon basin CA-Markov
+10.1002/9781118295861.ch3 Confronting suburbanization in Ljubljana
+10.1016/j.rse.2017.06.031 Google Earth Engine
+10.1117/12.2278218 Sen2Cor
+10.3390/rs9060584 Sentinel-2A calibration products validation
+10.3986/ags42002 Petek land use change Slovenia 1896-1999
+10.3986/ags.6636 Ribeiro land-use changes ecosystem services Slovenian rural landscapes
+10.3986/ags.6988 Kladnik land-use changes Slovenian terraced landscapes
+10.14720/aas.2017.109.2.10 Glavan abandonment agricultural land Slovenia
+10.3986/ags.7611 Horvat demographic development land-use changes Slovenia
+10.18690/rg.17.2.2729 Ziberna land use changes mesoregions Slovenia 2000-2022
+10.3986/ags.7005 Bicik long-term land-use changes Czechia Slovenia
+10.1201/9781315372860-8 Buttner CORINE Land Cover products
+10.5379/urbani-izziv-en-2006-17-01-02-002 Jakos Ljubljana phases of urban development
+10.5194/essd-13-1119-2021 LUCAS Copernicus 2018
