@@ -12,31 +12,31 @@ window.LULC = {
  "classes": {
   "1": {
    "name": "Barren",
-   "color": "#c8a26e"
+   "color": "#cccccc"
   },
   "2": {
    "name": "Uncultivated",
-   "color": "#b5d36b"
+   "color": "#ffffbe"
   },
   "3": {
-   "name": "Water Shallow",
-   "color": "#7cc6f2"
+   "name": "Shallow Water",
+   "color": "#bed2ff"
   },
   "4": {
-   "name": "Water Deep",
-   "color": "#1f5fa8"
+   "name": "Deep Water",
+   "color": "#0070ff"
   },
   "5": {
    "name": "Built-up",
-   "color": "#d7301f"
+   "color": "#ff0000"
   },
   "6": {
    "name": "Forest",
-   "color": "#2e7d32"
+   "color": "#267300"
   },
   "7": {
    "name": "Cultivated",
-   "color": "#f2c84b"
+   "color": "#ffff00"
   }
  },
  "layers": [

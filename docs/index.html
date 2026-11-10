@@ -68,7 +68,7 @@
   th, td { padding: 5px 4px; text-align: right; border-bottom: 1px solid var(--line); }
   th { font-size: 11px; color: var(--muted); font-weight: 600; }
   th:first-child, td:first-child { text-align: left; }
-  td .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 7px; }
+  td .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 7px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.28); }
   .pos { color: #15803d; } .neg { color: #b91c1c; }
   :root[data-theme="dark"] .pos { color: #4ade80; } :root[data-theme="dark"] .neg { color: #f87171; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pos { color: #4ade80; } :root:not([data-theme="light"]) .neg { color: #f87171; } }
@@ -313,13 +313,21 @@
       ctx.restore();
     }
   };
+  // Very pale map colours (e.g. #ffffbe) vanish as chart lines: darken those for the chart only.
+  const lineColor = hex => {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    if (lum < 0.7) return hex;
+    const f = 0.62;
+    return `rgb(${Math.round(r * f)},${Math.round(g * f)},${Math.round(b * f)})`;
+  };
   const chart = new Chart($('chart'), {
     type: 'line',
     data: {
       datasets: classIds.map(k => ({
         label: D.classes[k].name,
         data: layers.map(l => ({ x: l.year, y: km2(l.area_ha[k]) })),
-        borderColor: D.classes[k].color, backgroundColor: D.classes[k].color,
+        borderColor: lineColor(D.classes[k].color), backgroundColor: D.classes[k].color,
         borderWidth: 2, pointRadius: 3, tension: 0,
         segment: { borderDash: c => c.p1.parsed.x > lastHist ? [5, 4] : undefined }
       }))
