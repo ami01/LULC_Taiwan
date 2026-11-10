@@ -169,8 +169,18 @@
     <p class="note">Drag the handle on the map to swipe between years.</p>
   </section>
 
-  <section>
-    <label class="f">Layer opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.85"></label>
+  <section class="pair">
+    <label class="f">Basemap
+      <select id="basemap">
+        <option value="sat">Satellite + labels</option>
+        <option value="topo">Topographic</option>
+        <option value="osm">Streets (OSM)</option>
+        <option value="gray">Plain gray</option>
+      </select>
+    </label>
+    <label class="f">LULC opacity <span id="opVal" style="color:var(--text);font-variant-numeric:tabular-nums">70%</span>
+      <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.7" aria-label="LULC layer opacity">
+    </label>
   </section>
 
   <section>
@@ -255,15 +265,40 @@
 
   // ---------- Map ----------
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const map = L.map('map', { zoomSnap: 1 });
-  L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${dark ? 'World_Dark_Gray_Base' : 'World_Light_Gray_Base'}/MapServer/tile/{z}/{y}/{x}`, {
-    maxZoom: 16, attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
-  }).addTo(map);
+  const map = L.map('map', { zoomSnap: 1, maxZoom: 17 });
   map.fitBounds(D.bounds);
 
   const paneL = map.createPane('lulcLeft');  paneL.style.zIndex = 410;
   const paneR = map.createPane('lulcRight'); paneR.style.zIndex = 420;
-  let opacity = 0.85;
+  // Place-name labels sit above the LULC layers so towns stay readable on the satellite view.
+  const paneLab = map.createPane('labels'); paneLab.style.zIndex = 450; paneLab.style.pointerEvents = 'none';
+
+  const esri = s => `https://server.arcgisonline.com/ArcGIS/rest/services/${s}/MapServer/tile/{z}/{y}/{x}`;
+  const BASEMAPS = {
+    sat: [L.tileLayer(esri('World_Imagery'), { maxZoom: 17,
+            attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community' }),
+          L.tileLayer(esri('Reference/World_Boundaries_and_Places'), { pane: 'labels', maxZoom: 17 })],
+    topo: [L.tileLayer(esri('World_Topo_Map'), { maxZoom: 17,
+            attribution: 'Basemap &copy; Esri, HERE, Garmin, FAO, NOAA, USGS, &copy; OpenStreetMap contributors' })],
+    osm: [L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 17,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' })],
+    gray: [L.tileLayer(esri(`Canvas/${dark ? 'World_Dark_Gray_Base' : 'World_Light_Gray_Base'}`), { maxZoom: 16,
+            attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' })]
+  };
+  let currentBase = null;
+  function setBasemap(key) {
+    if (!BASEMAPS[key]) key = 'sat';
+    if (currentBase) BASEMAPS[currentBase].forEach(l => map.removeLayer(l));
+    BASEMAPS[key].forEach(l => l.addTo(map));
+    currentBase = key; $('basemap').value = key;
+    try { localStorage.setItem('lulc.basemap', key); } catch (e) {}
+  }
+  let savedBase = null;
+  try { savedBase = localStorage.getItem('lulc.basemap'); } catch (e) {}
+  setBasemap(savedBase || 'sat');
+  $('basemap').addEventListener('change', e => setBasemap(e.target.value));
+
+  let opacity = 0.7;
   const ovL = layers.map(l => L.imageOverlay(l.src, D.bounds, { pane: 'lulcLeft', opacity: 0, interactive: false }).addTo(map));
   const ovR = layers.map(l => L.imageOverlay(l.src, D.bounds, { pane: 'lulcRight', opacity: 0, interactive: false }).addTo(map));
 
@@ -323,7 +358,9 @@
   $('yearRange').addEventListener('input', e => { idx = +e.target.value; update(); });
   $('selL').addEventListener('change', e => { idxL = +e.target.value; update(); });
   $('selR').addEventListener('change', e => { idxR = +e.target.value; update(); });
-  $('opacity').addEventListener('input', e => { opacity = +e.target.value; showOverlays(); });
+  $('opacity').addEventListener('input', e => {
+    opacity = +e.target.value; $('opVal').textContent = Math.round(opacity * 100) + '%'; showOverlays();
+  });
 
   function setMode(m) {
     mode = m; stop();
