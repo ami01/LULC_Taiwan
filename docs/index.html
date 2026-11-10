@@ -73,6 +73,10 @@
   :root[data-theme="dark"] .pos { color: #4ade80; } :root[data-theme="dark"] .neg { color: #f87171; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pos { color: #4ade80; } :root:not([data-theme="light"]) .neg { color: #f87171; } }
   .chartbox { position: relative; height: 230px; }
+  .chartkey { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
+  .popkey { display: inline-block; width: 16px; height: 0; border-top: 2.5px solid var(--text); vertical-align: middle; margin-right: 6px; }
+  tr.sep td { border-top: 2px solid var(--line); }
+  td.na { color: var(--muted); font-style: italic; }
   .foot { font-size: 12px; color: var(--muted); margin-top: auto; }
   .hidden { display: none !important; }
 
@@ -147,11 +151,13 @@
   </section>
 
   <section>
-    <h2>Area trend (km²)</h2>
-    <div class="chartbox"><canvas id="chart" aria-label="Line chart of area by class over time"></canvas></div>
+    <h2>Area trend vs. population</h2>
+    <div class="chartbox"><canvas id="chart" aria-label="Line chart of area by class and population over time"></canvas></div>
+    <p class="chartkey"><span class="popkey"></span>Population (millions, right axis) · class areas in km² (left axis, log scale)</p>
   </section>
 
-  <div class="foot">100 m resolution · UTM 51N source data · 2030/2050 are model projections (3-variable scenario).</div>
+  <div class="foot">100 m resolution · UTM 51N source data · 2030/2050 are model projections (3-variable scenario).<br>
+    <span id="popSrc"></span></div>
 </aside>
 
 <div id="mapwrap">
@@ -164,6 +170,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="data/lulc.js"></script>
+<script src="data/population.js"></script>
 <script>
 (() => {
   const D = window.LULC;
@@ -173,6 +180,17 @@
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const km2 = ha => ha / 100;
   const fmt = n => n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+
+  // ---------- Population ----------
+  const POP = window.POPULATION || { values: {} };
+  const pop = y => POP.values[y] ?? null;
+  const builtId = classIds.find(k => /built/i.test(D.classes[k].name));
+  const perCap = l => (pop(l.year) && builtId) ? (l.area_ha[builtId] * 10000) / pop(l.year) : null; // m² per person
+  const fmtM = n => (n / 1e6).toFixed(2) + '\u00a0M';
+  const NA = '<td class="na">n/a</td>';
+  const pct = (a, b) => { const d = 100 * (b - a) / a; return `<td class="${d > 0 ? 'pos' : d < 0 ? 'neg' : ''}">${d > 0 ? '+' : ''}${d.toFixed(1)}%</td>`; };
+  $('popSrc').textContent = 'Population: ' + (POP.source || '') +
+    (POP.projectionSource ? '; projections: ' + POP.projectionSource : '; 2030/2050 projections not yet added') + '.';
 
   // ---------- Map ----------
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
@@ -284,6 +302,9 @@
         const c = D.classes[k];
         h += `<tr><td><span class="sw" style="background:${c.color}"></span>${c.name}</td><td>${fmt(km2(a[k]))}</td><td>${(100 * a[k] / tot).toFixed(1)}%</td></tr>`;
       }
+      const l = layers[idx], p = pop(l.year), pc = perCap(l);
+      h += `<tr class="sep"><td>Population</td>${p ? `<td>${fmtM(p)}</td><td></td>` : NA + '<td></td>'}</tr>`;
+      h += `<tr><td>Built-up per person</td>${pc ? `<td>${fmt(pc)} m²</td><td></td>` : NA + '<td></td>'}</tr>`;
     } else {
       const A = layers[idxL], B = layers[idxR];
       $('tblTitle').textContent = `Change ${A.year} → ${B.year}`;
@@ -292,6 +313,9 @@
         const c = D.classes[k], d = km2(B.area_ha[k] - A.area_ha[k]);
         h += `<tr><td><span class="sw" style="background:${c.color}"></span>${c.name}</td><td>${fmt(km2(A.area_ha[k]))}</td><td>${fmt(km2(B.area_ha[k]))}</td><td class="${d > 0 ? 'pos' : d < 0 ? 'neg' : ''}">${d > 0 ? '+' : ''}${fmt(d)}</td></tr>`;
       }
+      const pA = pop(A.year), pB = pop(B.year), cA = perCap(A), cB = perCap(B);
+      h += `<tr class="sep"><td>Population</td>${pA ? `<td>${fmtM(pA)}</td>` : NA}${pB ? `<td>${fmtM(pB)}</td>` : NA}${pA && pB ? pct(pA, pB) : NA}</tr>`;
+      h += `<tr><td>Built-up / person (m²)</td>${cA ? `<td>${fmt(cA)}</td>` : NA}${cB ? `<td>${fmt(cB)}</td>` : NA}${cA && cB ? pct(cA, cB) : NA}</tr>`;
     }
     t.innerHTML = h;
   }
@@ -330,7 +354,13 @@
         borderColor: lineColor(D.classes[k].color), backgroundColor: D.classes[k].color,
         borderWidth: 2, pointRadius: 3, tension: 0,
         segment: { borderDash: c => c.p1.parsed.x > lastHist ? [5, 4] : undefined }
-      }))
+      })).concat([{
+        label: 'Population', yAxisID: 'yPop', isPop: true,
+        data: layers.filter(l => pop(l.year)).map(l => ({ x: l.year, y: pop(l.year) / 1e6 })),
+        borderColor: css('--text'), backgroundColor: css('--text'),
+        borderWidth: 2.5, pointRadius: 3.5, pointStyle: 'rectRot', tension: 0,
+        segment: { borderDash: c => c.p1.parsed.x > lastHist ? [5, 4] : undefined }
+      }])
     },
     options: {
       maintainAspectRatio: false, animation: false,
@@ -338,12 +368,15 @@
       scales: {
         x: { type: 'linear', min: layers[0].year, max: layers.at(-1).year,
              ticks: { stepSize: 10, color: css('--muted'), callback: v => v }, grid: { color: css('--line') } },
-        y: { type: 'logarithmic', ticks: { color: css('--muted'), callback: v => [100,300,1000,3000,10000,30000].includes(v) ? fmt(v) : '' }, grid: { color: css('--line') } }
+        y: { type: 'logarithmic', ticks: { color: css('--muted'), callback: v => [100,300,1000,3000,10000,30000].includes(v) ? fmt(v) : '' }, grid: { color: css('--line') } },
+        yPop: { position: 'right', suggestedMin: 15, suggestedMax: 25, grid: { drawOnChartArea: false },
+                ticks: { color: css('--text'), callback: v => v + 'M' } }
       },
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { title: i => i[0].parsed.x + (i[0].parsed.x > lastHist ? ' (projected)' : ''),
-                                label: i => ` ${i.dataset.label}: ${fmt(i.parsed.y)} km²` } }
+                                label: i => i.dataset.isPop ? ` Population: ${i.parsed.y.toFixed(2)} million`
+                                                            : ` ${i.dataset.label}: ${fmt(i.parsed.y)} km²` } }
       }
     },
     plugins: [markers]
