@@ -4,24 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taiwan LULC Explorer</title>
-<meta name="description" content="Historical (1990–2020) and projected (2030–2050) land use / land cover change in Taiwan.">
+<meta name="description" content="Historical (1990–2020) and projected (2030–2050) land use / land cover change in Taiwan, alongside population.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root {
     --bg: #f6f7f9; --panel: #ffffff; --text: #1d2330; --muted: #5d6676;
     --line: #dde1e7; --accent: #2563eb; --accent-ink: #ffffff; --proj: #b45309;
+    --card: #f3f5f8; --pos: #15803d; --neg: #b91c1c;
+    --built: #e11d1d; --popc: #1d2330;
+    --age-young: #3a9e8f; --age-work: #8a94a6; --age-old: #d9822b;
     --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #12151b; --panel: #1b1f27; --text: #e7eaf0; --muted: #9aa3b2;
       --line: #2c323d; --accent: #60a5fa; --accent-ink: #0b1220; --proj: #f59e0b;
+      --card: #232833; --pos: #4ade80; --neg: #f87171; --built: #ff5a5a; --popc: #e7eaf0;
       --shadow: 0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
     }
   }
   :root[data-theme="dark"] {
     --bg: #12151b; --panel: #1b1f27; --text: #e7eaf0; --muted: #9aa3b2;
     --line: #2c323d; --accent: #60a5fa; --accent-ink: #0b1220; --proj: #f59e0b;
+    --card: #232833; --pos: #4ade80; --neg: #f87171; --built: #ff5a5a; --popc: #e7eaf0;
     --shadow: 0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
   }
   * { box-sizing: border-box; }
@@ -29,56 +34,65 @@
   body {
     background: var(--bg); color: var(--text);
     font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: grid; grid-template-columns: 360px 1fr; grid-template-rows: 100vh;
+    display: grid; grid-template-columns: 340px minmax(0, 1fr) 340px; grid-template-rows: 100vh;
+    grid-template-areas: "left map right";
   }
   aside {
-    background: var(--panel); border-right: 1px solid var(--line);
-    overflow-y: auto; padding: 20px 20px 28px; display: flex; flex-direction: column; gap: 20px;
+    background: var(--panel); overflow-y: auto; padding: 20px 18px 24px;
+    display: flex; flex-direction: column; gap: 20px; min-width: 0;
   }
+  #left { grid-area: left; border-right: 1px solid var(--line); }
+  #right { grid-area: right; border-left: 1px solid var(--line); }
+  #mapwrap { grid-area: map; position: relative; height: 100%; overflow: hidden; }
+
   h1 { font-size: 19px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .panelhead { font-size: 16px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 8px; }
+  .panelhead .dot { width: 10px; height: 10px; border-radius: 50%; }
   h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
   p.sub { margin: 0; color: var(--muted); }
+  p.note { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
   .seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px; padding: 3px; gap: 3px; }
-  .seg button {
-    border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 600;
-    padding: 7px 0; border-radius: 6px; cursor: pointer;
-  }
+  .seg button { border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 600; padding: 7px 0; border-radius: 6px; cursor: pointer; }
   .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
   .yearbig { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
   .yearbig strong { font-size: 34px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
-  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 999px; border: 1px solid currentColor; }
+  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
   .badge.historical { color: var(--muted); }
   .badge.projected { color: var(--proj); }
   .row { display: flex; align-items: center; gap: 10px; }
   input[type=range] { width: 100%; accent-color: var(--accent); }
   .ticks { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); padding: 0 2px; font-variant-numeric: tabular-nums; }
   .ticks span.proj { color: var(--proj); }
-  .iconbtn {
-    flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line);
-    background: var(--panel); color: var(--text); cursor: pointer; display: grid; place-items: center;
-  }
+  .iconbtn { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; display: grid; place-items: center; }
   .iconbtn:hover { border-color: var(--accent); }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
-  select {
-    font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line);
-    border-radius: 6px; padding: 6px 8px;
-  }
+  select { font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+
   table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-  th, td { padding: 5px 4px; text-align: right; border-bottom: 1px solid var(--line); }
+  th, td { padding: 5px 4px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { font-size: 11px; color: var(--muted); font-weight: 600; }
-  th:first-child, td:first-child { text-align: left; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; }
   td .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 7px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.28); }
-  .pos { color: #15803d; } .neg { color: #b91c1c; }
-  :root[data-theme="dark"] .pos { color: #4ade80; } :root[data-theme="dark"] .neg { color: #f87171; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pos { color: #4ade80; } :root:not([data-theme="light"]) .neg { color: #f87171; } }
-  .chartbox { position: relative; height: 230px; }
-  .chartkey { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
-  .popkey { display: inline-block; width: 16px; height: 0; border-top: 2.5px solid var(--text); vertical-align: middle; margin-right: 6px; }
-  tr.sep td { border-top: 2px solid var(--line); }
-  :root { --age-young: #3a9e8f; --age-work: #8a94a6; --age-old: #d9822b; }
+  .pos { color: var(--pos); } .neg { color: var(--neg); }
+
+  .chartbox { position: relative; height: 210px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; margin-top: 8px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { display: inline-block; width: 16px; height: 0; border-top: 3px solid; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card { background: var(--card); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+  .card.wide { grid-column: 1 / -1; }
+  .card .k { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .card .v { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.01em; line-height: 1.2; margin-top: 2px; }
+  .card .v small { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .card .d { font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 2px; color: var(--muted); }
+  .card .d b { font-weight: 700; }
+  .card .arrow { color: var(--muted); font-weight: 400; margin: 0 4px; }
+
   .agerow { margin-bottom: 12px; }
-  .agehead { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .agehead { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
   .agehead b { font-size: 13px; }
   .agehead b.proj { color: var(--proj); }
   .agehead span { color: var(--muted); }
@@ -86,40 +100,44 @@
   .agebar div { display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; }
   .agekey { display: flex; gap: 14px; font-size: 11px; color: var(--muted); }
   .agekey i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
-  td.na { color: var(--muted); font-style: italic; }
+
   .foot { font-size: 12px; color: var(--muted); margin-top: auto; }
   .hidden { display: none !important; }
 
   #map { height: 100%; background: var(--bg); }
   .leaflet-image-layer { image-rendering: pixelated; image-rendering: crisp-edges; }
   .leaflet-container { font: inherit; }
-  #divider {
-    position: absolute; top: 0; bottom: 0; width: 0; z-index: 650; pointer-events: none;
-    border-left: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.35);
-  }
+  #divider { position: absolute; top: 0; bottom: 0; width: 0; z-index: 650; pointer-events: none; border-left: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
   #handle {
     position: absolute; top: 50%; left: -19px; width: 36px; height: 36px; margin-top: -18px;
     border-radius: 50%; background: #fff; color: #111; box-shadow: var(--shadow);
     display: grid; place-items: center; cursor: ew-resize; pointer-events: auto; touch-action: none;
     font-size: 14px; font-weight: 700; user-select: none;
   }
-  .maplabel {
-    position: absolute; top: 12px; z-index: 640; background: var(--panel); color: var(--text);
-    padding: 4px 10px; border-radius: 6px; box-shadow: var(--shadow); font-weight: 700; font-variant-numeric: tabular-nums;
-  }
+  .maplabel { position: absolute; top: 12px; z-index: 640; background: var(--panel); color: var(--text); padding: 4px 10px; border-radius: 6px; box-shadow: var(--shadow); font-weight: 700; font-variant-numeric: tabular-nums; }
   #labL { left: 56px; } #labR { right: 12px; }
   .maplabel.proj { color: var(--proj); }
-  #mapwrap { position: relative; height: 100%; overflow: hidden; }
 
-  @media (max-width: 820px) {
-    body { grid-template-columns: 1fr; grid-template-rows: 58vh auto; height: auto; }
-    #mapwrap { grid-row: 1; height: 58vh; }
-    aside { grid-row: 2; border-right: 0; border-top: 1px solid var(--line); padding: 16px; overflow: visible; }
+  /* Medium screens: map on top, the two panels side by side below it. */
+  @media (max-width: 1180px) {
+    html, body { height: auto; }
+    body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: 62vh auto; grid-template-areas: "map map" "left right"; }
+    aside { overflow: visible; }
+    #left { border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
+    #right { border-left: 0; border-top: 1px solid var(--line); }
+  }
+  /* Phones: everything stacked. */
+  @media (max-width: 760px) {
+    body { grid-template-columns: minmax(0, 1fr); grid-template-rows: 58vh auto auto; grid-template-areas: "map" "left" "right"; }
+    aside { padding: 16px; }
+    #left { border-right: 0; }
+    #right { border-top: 6px solid var(--bg); }
   }
 </style>
 </head>
 <body>
-<aside>
+
+<aside id="left" aria-label="Land use and land cover">
   <div>
     <h1>Taiwan Land Use / Land Cover</h1>
     <p class="sub">Historical maps 1990–2020 and projected scenarios for 2030 and 2050.</p>
@@ -148,7 +166,7 @@
       <label class="f">Left map<select id="selL"></select></label>
       <label class="f">Right map<select id="selR"></select></label>
     </div>
-    <p class="sub" style="margin-top:8px;font-size:12px">Drag the handle on the map to swipe between years.</p>
+    <p class="note">Drag the handle on the map to swipe between years.</p>
   </section>
 
   <section>
@@ -161,13 +179,38 @@
   </section>
 
   <section>
-    <h2>Area trend vs. population</h2>
-    <div class="chartbox"><canvas id="chart" aria-label="Line chart of area by class and population over time"></canvas></div>
-    <p class="chartkey"><span class="popkey"></span>Population (millions, right axis) · class areas in km² (left axis, log scale)</p>
+    <h2>Land composition by year</h2>
+    <div class="chartbox" style="height:230px"><canvas id="compChart" aria-label="Stacked bar chart of the share of each land class in each year"></canvas></div>
+    <p class="note">Each bar is the whole island (100%). Highlighted bars = year(s) shown on the map. * = projected.</p>
+  </section>
+
+  <div class="foot">100 m resolution · UTM 51N source data · 2030/2050 are model projections (3-variable scenario).</div>
+</aside>
+
+<div id="mapwrap">
+  <div id="map"></div>
+  <div id="divider" class="hidden"><div id="handle" aria-label="Swipe handle">⇔</div></div>
+  <div id="labL" class="maplabel hidden"></div>
+  <div id="labR" class="maplabel hidden"></div>
+</div>
+
+<aside id="right" aria-label="Population">
+  <p class="panelhead">Population &amp; urban growth <span id="popBadge" class="badge historical">1990</span></p>
+
+  <div class="cards" id="cards"></div>
+
+  <section>
+    <h2>Built-up area vs. population</h2>
+    <div class="chartbox"><canvas id="idxChart" aria-label="Line chart of built-up area and population, both indexed to 1990 = 100"></canvas></div>
+    <div class="legend">
+      <span><i style="border-color:var(--built)"></i>Built-up area</span>
+      <span><i style="border-color:var(--popc)"></i>Population</span>
+    </div>
+    <p class="note" id="idxNote"></p>
   </section>
 
   <section id="ageSec" class="hidden">
-    <h2 id="ageTitle">Population age structure</h2>
+    <h2>Age structure</h2>
     <div id="ageBars"></div>
     <div class="agekey">
       <span><i style="background:var(--age-young)"></i>0–14</span>
@@ -177,20 +220,12 @@
   </section>
 
   <section id="popCheck" class="hidden">
-    <h2>Population: paper vs. official</h2>
+    <h2>Paper vs. official data</h2>
     <table id="popTbl"></table>
   </section>
 
-  <div class="foot">100 m resolution · UTM 51N source data · 2030/2050 are model projections (3-variable scenario).<br>
-    <span id="popSrc"></span></div>
+  <div class="foot" id="popSrc"></div>
 </aside>
-
-<div id="mapwrap">
-  <div id="map"></div>
-  <div id="divider" class="hidden"><div id="handle" aria-label="Swipe handle">⇔</div></div>
-  <div id="labL" class="maplabel hidden"></div>
-  <div id="labR" class="maplabel hidden"></div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -205,51 +240,24 @@
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const km2 = ha => ha / 100;
   const fmt = n => n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+  const signed = (v, dp = 1, unit = '%') => `${v > 0 ? '+' : ''}${v.toFixed(dp)}${unit}`;
+  const cls = v => v > 0 ? 'pos' : v < 0 ? 'neg' : '';
+  const lastHist = Math.max(...layers.filter(l => l.type === 'historical').map(l => l.year));
+  const isProj = y => y > lastHist;
 
-  // ---------- Population ----------
+  // ---------- Population helpers ----------
   const POP = window.POPULATION || { values: {} };
   const pop = y => POP.values[y] ?? null;
   const builtId = classIds.find(k => /built/i.test(D.classes[k].name));
+  const builtKm2 = l => km2(l.area_ha[builtId]);
   const perCap = l => (pop(l.year) && builtId) ? (l.area_ha[builtId] * 10000) / pop(l.year) : null; // m² per person
-  const fmtM = n => (n / 1e6).toFixed(2) + '\u00a0M';
-  const NA = '<td class="na">n/a</td>';
-  const pct = (a, b) => { const d = 100 * (b - a) / a; return `<td class="${d > 0 ? 'pos' : d < 0 ? 'neg' : ''}">${d > 0 ? '+' : ''}${d.toFixed(1)}%</td>`; };
-  if (POP.paper && pop(1990) && pop(2020)) {
-    const off = 100 * (pop(2020) - pop(1990)) / pop(1990);
-    $('popTbl').innerHTML =
-      '<tr><th>Indicator</th><th>Paper</th><th>Official</th></tr>' +
-      `<tr><td>Growth 1990–2020</td><td>+${POP.paper.growth_1990_2020_pct.toFixed(1)}%</td><td>+${off.toFixed(1)}%</td></tr>` +
-      `<tr><td>Total population</td><td>~${POP.paper.total_millions} M</td><td>${fmtM(pop(2020))} <span style="color:var(--muted)">(2020)</span></td></tr>` +
-      `<tr><td>Trend</td><td colspan="2" style="text-align:left">${POP.paper.trend_note}</td></tr>`;
-    $('popCheck').classList.remove('hidden');
-  }
-  $('popSrc').textContent = 'Population: ' + (POP.source || '') +
-    (POP.projectedFrom ? ` (values from ${POP.projectedFrom} onward are projections)` : '') + '.';
-
-  // ---------- Age structure ----------
-  function ageRow(y) {
-    const a = POP.age && POP.age[y], s = POP.sex && POP.sex[y];
-    if (!a) return '';
-    const t = a['0-14'] + a['15-64'] + a['65+'];
-    const seg = (v, c) => { const p = 100 * v / t; return `<div style="width:${p}%;background:var(${c})" title="${p.toFixed(1)}%">${p >= 9 ? p.toFixed(0) + '%' : ''}</div>`; };
-    const proj = POP.projectedFrom && y >= POP.projectedFrom;
-    const sexTxt = s ? `♂ ${(s.male / 1e6).toFixed(2)}M · ♀ ${(s.female / 1e6).toFixed(2)}M` : '';
-    return `<div class="agerow"><div class="agehead"><b class="${proj ? 'proj' : ''}">${y}${proj ? ' (projected)' : ''}</b><span>${sexTxt}</span></div>
-      <div class="agebar" role="img" aria-label="${y}: ages 0-14 ${(100 * a['0-14'] / t).toFixed(1)}%, 15-64 ${(100 * a['15-64'] / t).toFixed(1)}%, 65+ ${(100 * a['65+'] / t).toFixed(1)}%">
-      ${seg(a['0-14'], '--age-young')}${seg(a['15-64'], '--age-work')}${seg(a['65+'], '--age-old')}</div></div>`;
-  }
-  function ages() {
-    if (!POP.age) return;
-    $('ageSec').classList.remove('hidden');
-    $('ageBars').innerHTML = mode === 'time' ? ageRow(layers[idx].year) : ageRow(layers[idxL].year) + ageRow(layers[idxR].year);
-  }
+  const fmtM = n => (n / 1e6).toFixed(2);
 
   // ---------- Map ----------
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
   const map = L.map('map', { zoomSnap: 1 });
   L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${dark ? 'World_Dark_Gray_Base' : 'World_Light_Gray_Base'}/MapServer/tile/{z}/{y}/{x}`, {
-    maxZoom: 16,
-    attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
+    maxZoom: 16, attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
   }).addTo(map);
   map.fitBounds(D.bounds);
 
@@ -261,6 +269,7 @@
 
   // ---------- State ----------
   let mode = 'time', idx = 0, idxL = 0, idxR = layers.length - 1, divX = null, timer = null;
+  const selected = () => mode === 'time' ? [idx] : [idxL, idxR];
 
   function showOverlays() {
     ovL.forEach((o, i) => o.setOpacity(i === (mode === 'time' ? idx : idxL) ? opacity : 0));
@@ -282,6 +291,7 @@
     divider.style.left = divX + 'px';
   }
   map.on('move zoom resize', clip);
+  new ResizeObserver(() => map.invalidateSize()).observe(wrap);
   const handle = $('handle');
   handle.addEventListener('pointerdown', e => {
     e.preventDefault(); e.stopPropagation();
@@ -301,17 +311,15 @@
   L.DomEvent.disableClickPropagation(divider);
 
   // ---------- Controls ----------
-  const ticks = $('ticks');
   layers.forEach(l => {
     const s = document.createElement('span');
     s.textContent = l.year; if (l.type === 'projected') s.className = 'proj';
-    ticks.appendChild(s);
+    $('ticks').appendChild(s);
   });
   for (const sel of [$('selL'), $('selR')]) {
     layers.forEach((l, i) => sel.add(new Option(`${l.year}${l.type === 'projected' ? ' (projected)' : ''}`, i)));
   }
   $('selL').value = idxL; $('selR').value = idxR;
-
   $('yearRange').addEventListener('input', e => { idx = +e.target.value; update(); });
   $('selL').addEventListener('change', e => { idxL = +e.target.value; update(); });
   $('selR').addEventListener('change', e => { idxR = +e.target.value; update(); });
@@ -343,9 +351,9 @@
     step(); timer = setInterval(step, 1300);
   };
 
-  // ---------- Table ----------
+  // ---------- LULC table ----------
   function table() {
-    const t = $('tbl'); let h = '';
+    let h = '';
     if (mode === 'time') {
       const a = layers[idx].area_ha, tot = classIds.reduce((s, k) => s + a[k], 0);
       $('tblTitle').textContent = `Area by class — ${layers[idx].year}`;
@@ -354,85 +362,164 @@
         const c = D.classes[k];
         h += `<tr><td><span class="sw" style="background:${c.color}"></span>${c.name}</td><td>${fmt(km2(a[k]))}</td><td>${(100 * a[k] / tot).toFixed(1)}%</td></tr>`;
       }
-      const l = layers[idx], p = pop(l.year), pc = perCap(l);
-      h += `<tr class="sep"><td>Population</td>${p ? `<td>${fmtM(p)}</td><td></td>` : NA + '<td></td>'}</tr>`;
-      h += `<tr><td>Built-up per person</td>${pc ? `<td>${fmt(pc)} m²</td><td></td>` : NA + '<td></td>'}</tr>`;
     } else {
       const A = layers[idxL], B = layers[idxR];
       $('tblTitle').textContent = `Change ${A.year} → ${B.year}`;
       h = `<tr><th>Class</th><th>${A.year}</th><th>${B.year}</th><th>Δ km²</th></tr>`;
       for (const k of classIds) {
         const c = D.classes[k], d = km2(B.area_ha[k] - A.area_ha[k]);
-        h += `<tr><td><span class="sw" style="background:${c.color}"></span>${c.name}</td><td>${fmt(km2(A.area_ha[k]))}</td><td>${fmt(km2(B.area_ha[k]))}</td><td class="${d > 0 ? 'pos' : d < 0 ? 'neg' : ''}">${d > 0 ? '+' : ''}${fmt(d)}</td></tr>`;
+        h += `<tr><td><span class="sw" style="background:${c.color}"></span>${c.name}</td><td>${fmt(km2(A.area_ha[k]))}</td><td>${fmt(km2(B.area_ha[k]))}</td><td class="${cls(d)}">${d > 0 ? '+' : ''}${fmt(d)}</td></tr>`;
       }
-      const pA = pop(A.year), pB = pop(B.year), cA = perCap(A), cB = perCap(B);
-      h += `<tr class="sep"><td>Population</td>${pA ? `<td>${fmtM(pA)}</td>` : NA}${pB ? `<td>${fmtM(pB)}</td>` : NA}${pA && pB ? pct(pA, pB) : NA}</tr>`;
-      h += `<tr><td>Built-up / person (m²)</td>${cA ? `<td>${fmt(cA)}</td>` : NA}${cB ? `<td>${fmt(cB)}</td>` : NA}${cA && cB ? pct(cA, cB) : NA}</tr>`;
     }
-    t.innerHTML = h;
+    $('tbl').innerHTML = h;
   }
 
-  // ---------- Chart ----------
-  const lastHist = Math.max(...layers.filter(l => l.type === 'historical').map(l => l.year));
-  const markers = {
-    id: 'markers',
-    afterDatasetsDraw(ch) {
+  // ---------- Land composition chart (100% stacked bars) ----------
+  const share = (l, k) => 100 * l.area_ha[k] / classIds.reduce((s, c) => s + l.area_ha[c], 0);
+  const fade = hex => hex + '40';
+  const compChart = new Chart($('compChart'), {
+    type: 'bar',
+    data: {
+      labels: layers.map(l => l.year + (l.type === 'projected' ? '*' : '')),
+      datasets: classIds.map(k => ({
+        label: D.classes[k].name,
+        data: layers.map(l => share(l, k)),
+        backgroundColor: c => selected().includes(c.dataIndex) ? D.classes[k].color : fade(D.classes[k].color),
+        borderColor: 'rgba(0,0,0,.18)', borderWidth: 0.5, borderSkipped: false
+      }))
+    },
+    options: {
+      maintainAspectRatio: false, animation: false,
+      onClick: (e, els) => {
+        if (!els.length) return;
+        const i = els[0].index;
+        if (mode === 'time') { idx = i; $('yearRange').value = i; stop(); update(); }
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { color: c => isProj(layers[c.index]?.year) ? css('--proj') : css('--muted') } },
+        y: { stacked: true, max: 100, ticks: { color: css('--muted'), callback: v => v + '%', stepSize: 25 }, grid: { color: css('--line') } }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { mode: 'index', itemSort: (a, b) => b.datasetIndex - a.datasetIndex,
+          callbacks: { title: i => i[0].label.replace('*', ' (projected)'),
+                       label: i => ` ${i.dataset.label}: ${i.parsed.y.toFixed(1)}% (${fmt(km2(layers[i.dataIndex].area_ha[classIds[i.datasetIndex]]))} km²)` } }
+      }
+    }
+  });
+
+  // ---------- Population panel ----------
+  function card(k, v, unit, d, wide) {
+    return `<div class="card${wide ? ' wide' : ''}"><div class="k">${k}</div><div class="v">${v}${unit ? ` <small>${unit}</small>` : ''}</div>${d ? `<div class="d">${d}</div>` : ''}</div>`;
+  }
+  function cards() {
+    let h = '';
+    if (mode === 'time') {
+      const l = layers[idx], p = pop(l.year), base = layers[0];
+      const vs = (a, b) => `<b class="${cls(b - a)}">${signed(100 * (b - a) / a)}</b> vs ${base.year}`;
+      h += card('Population', p ? fmtM(p) : 'n/a', p ? 'million' : '', p && l !== base ? vs(pop(base.year), p) : 'Baseline year', true);
+      h += card('Built-up area', fmt(builtKm2(l)), 'km²', l !== base ? vs(builtKm2(base), builtKm2(l)) : '');
+      h += card('Built-up per person', perCap(l) ? fmt(perCap(l)) : 'n/a', 'm²', perCap(l) && l !== base ? vs(perCap(base), perCap(l)) : '');
+    } else {
+      const A = layers[idxL], B = layers[idxR];
+      const two = (a, b, f) => `${f(a)}<span class="arrow">→</span>${f(b)}`;
+      const chg = (a, b) => `<b class="${cls(b - a)}">${signed(100 * (b - a) / a)}</b> ${A.year}→${B.year}`;
+      const pA = pop(A.year), pB = pop(B.year);
+      h += card('Population (million)', pA && pB ? two(pA, pB, fmtM) : 'n/a', '', pA && pB ? chg(pA, pB) : '', true);
+      h += card('Built-up area (km²)', two(builtKm2(A), builtKm2(B), fmt), '', chg(builtKm2(A), builtKm2(B)), true);
+      const cA = perCap(A), cB = perCap(B);
+      h += card('Built-up per person (m²)', cA && cB ? two(cA, cB, fmt) : 'n/a', '', cA && cB ? chg(cA, cB) : '', true);
+    }
+    $('cards').innerHTML = h;
+    const b = $('popBadge');
+    if (mode === 'time') { const l = layers[idx]; b.textContent = l.year + (isProj(l.year) ? ' · projected' : ''); b.className = 'badge ' + l.type; }
+    else { b.textContent = `${layers[idxL].year} vs ${layers[idxR].year}`; b.className = 'badge ' + (isProj(layers[idxR].year) || isProj(layers[idxL].year) ? 'projected' : 'historical'); }
+  }
+
+  // ---------- Index chart: built-up vs population (first year = 100) ----------
+  const base = layers[0];
+  const idxSeries = f => layers.filter(l => f(l) != null).map(l => ({ x: l.year, y: 100 * f(l) / f(base) }));
+  const builtIdx = idxSeries(builtKm2), popIdx = idxSeries(l => pop(l.year));
+  const yearMarkers = {
+    id: 'yearMarkers',
+    beforeDatasetsDraw(ch) {
       const { ctx, chartArea: a, scales: { x } } = ch;
-      const yrs = mode === 'time' ? [layers[idx].year] : [layers[idxL].year, layers[idxR].year];
       ctx.save();
-      // projected zone shading
       const px = x.getPixelForValue(lastHist);
-      ctx.fillStyle = css('--proj'); ctx.globalAlpha = 0.07;
+      ctx.fillStyle = css('--proj'); ctx.globalAlpha = 0.08;
       ctx.fillRect(px, a.top, a.right - px, a.bottom - a.top);
-      ctx.globalAlpha = 1; ctx.strokeStyle = css('--text'); ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
-      for (const y of yrs) { const p = x.getPixelForValue(y); ctx.beginPath(); ctx.moveTo(p, a.top); ctx.lineTo(p, a.bottom); ctx.stroke(); }
+      ctx.globalAlpha = 0.9; ctx.fillStyle = css('--proj'); ctx.font = '600 10px system-ui, sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText('PROJECTED', a.right - 4, a.top + 11);
+      ctx.globalAlpha = 1; ctx.strokeStyle = css('--muted'); ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+      for (const i of selected()) { const p = x.getPixelForValue(layers[i].year); ctx.beginPath(); ctx.moveTo(p, a.top); ctx.lineTo(p, a.bottom); ctx.stroke(); }
       ctx.restore();
     }
   };
-  // Very pale map colours (e.g. #ffffbe) vanish as chart lines: darken those for the chart only.
-  const lineColor = hex => {
-    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
-    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-    if (lum < 0.7) return hex;
-    const f = 0.62;
-    return `rgb(${Math.round(r * f)},${Math.round(g * f)},${Math.round(b * f)})`;
-  };
-  const chart = new Chart($('chart'), {
+  const dash = { borderDash: c => isProj(c.p1.parsed.x) ? [5, 4] : undefined };
+  const idxChart = new Chart($('idxChart'), {
     type: 'line',
-    data: {
-      datasets: classIds.map(k => ({
-        label: D.classes[k].name,
-        data: layers.map(l => ({ x: l.year, y: km2(l.area_ha[k]) })),
-        borderColor: lineColor(D.classes[k].color), backgroundColor: D.classes[k].color,
-        borderWidth: 2, pointRadius: 3, tension: 0,
-        segment: { borderDash: c => c.p1.parsed.x > lastHist ? [5, 4] : undefined }
-      })).concat([{
-        label: 'Population', yAxisID: 'yPop', isPop: true,
-        data: layers.filter(l => pop(l.year)).map(l => ({ x: l.year, y: pop(l.year) / 1e6 })),
-        borderColor: css('--text'), backgroundColor: css('--text'),
-        borderWidth: 2.5, pointRadius: 3.5, pointStyle: 'rectRot', tension: 0,
-        segment: { borderDash: c => c.p1.parsed.x > lastHist ? [5, 4] : undefined }
-      }])
-    },
+    data: { datasets: [
+      { label: 'Built-up area', data: builtIdx, borderColor: css('--built'), backgroundColor: css('--built'), borderWidth: 2.5, pointRadius: 4, segment: dash },
+      { label: 'Population', data: popIdx, borderColor: css('--popc'), backgroundColor: css('--popc'), borderWidth: 2.5, pointRadius: 4, pointStyle: 'rectRot', segment: dash }
+    ] },
     options: {
       maintainAspectRatio: false, animation: false,
       interaction: { mode: 'nearest', axis: 'x', intersect: false },
       scales: {
-        x: { type: 'linear', min: layers[0].year, max: layers.at(-1).year,
-             ticks: { stepSize: 10, color: css('--muted'), callback: v => v }, grid: { color: css('--line') } },
-        y: { type: 'logarithmic', ticks: { color: css('--muted'), callback: v => [100,300,1000,3000,10000,30000].includes(v) ? fmt(v) : '' }, grid: { color: css('--line') } },
-        yPop: { position: 'right', suggestedMin: 15, suggestedMax: 25, grid: { drawOnChartArea: false },
-                ticks: { color: css('--text'), callback: v => v + 'M' } }
+        x: { type: 'linear', min: base.year, max: layers.at(-1).year, ticks: { stepSize: 10, color: css('--muted'), callback: v => v }, grid: { color: css('--line') } },
+        y: { suggestedMin: 50, ticks: { color: css('--muted') }, grid: { color: c => c.tick.value === 100 ? css('--muted') : css('--line') },
+             title: { display: true, text: `${base.year} = 100`, color: css('--muted'), font: { size: 11 } } }
       },
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { title: i => i[0].parsed.x + (i[0].parsed.x > lastHist ? ' (projected)' : ''),
-                                label: i => i.dataset.isPop ? ` Population: ${i.parsed.y.toFixed(2)} million`
-                                                            : ` ${i.dataset.label}: ${fmt(i.parsed.y)} km²` } }
+        tooltip: { callbacks: {
+          title: i => i[0].parsed.x + (isProj(i[0].parsed.x) ? ' (projected)' : ''),
+          label: i => {
+            const l = layers.find(l => l.year === i.parsed.x);
+            const raw = i.datasetIndex === 0 ? `${fmt(builtKm2(l))} km²` : `${fmtM(pop(l.year))} million`;
+            return ` ${i.dataset.label}: ${i.parsed.y.toFixed(0)} (${raw})`;
+          } } }
       }
     },
-    plugins: [markers]
+    plugins: [yearMarkers]
   });
+  if (builtIdx.length && popIdx.length) {
+    const lb = builtIdx.at(-1), lp = popIdx.at(-1);
+    $('idxNote').textContent = `Both lines start at 100 in ${base.year}. By ${lb.x}, built-up area is ${lb.y.toFixed(0)} ` +
+      `(${signed(lb.y - 100, 0)}) while population is ${lp.y.toFixed(0)} (${signed(lp.y - 100, 0)}): urban land keeps growing as population shrinks.`;
+  }
+
+  // ---------- Age structure ----------
+  function ageRow(y) {
+    const a = POP.age && POP.age[y], s = POP.sex && POP.sex[y];
+    if (!a) return '';
+    const t = a['0-14'] + a['15-64'] + a['65+'];
+    const seg = (v, c) => { const p = 100 * v / t; return `<div style="width:${p}%;background:var(${c})" title="${p.toFixed(1)}%">${p >= 9 ? p.toFixed(0) + '%' : ''}</div>`; };
+    const proj = isProj(y);
+    const sexTxt = s ? `♂ ${fmtM(s.male)}M · ♀ ${fmtM(s.female)}M` : '';
+    return `<div class="agerow"><div class="agehead"><b class="${proj ? 'proj' : ''}">${y}${proj ? ' (projected)' : ''}</b><span>${sexTxt}</span></div>
+      <div class="agebar" role="img" aria-label="${y}: ages 0-14 ${(100 * a['0-14'] / t).toFixed(1)}%, 15-64 ${(100 * a['15-64'] / t).toFixed(1)}%, 65+ ${(100 * a['65+'] / t).toFixed(1)}%">
+      ${seg(a['0-14'], '--age-young')}${seg(a['15-64'], '--age-work')}${seg(a['65+'], '--age-old')}</div></div>`;
+  }
+  function ages() {
+    if (!POP.age) return;
+    $('ageSec').classList.remove('hidden');
+    $('ageBars').innerHTML = selected().map(i => ageRow(layers[i].year)).join('');
+  }
+
+  // ---------- Paper vs official + source ----------
+  if (POP.paper && pop(1990) && pop(2020)) {
+    const off = 100 * (pop(2020) - pop(1990)) / pop(1990);
+    $('popTbl').innerHTML =
+      '<tr><th>Indicator</th><th>Paper</th><th>Official</th></tr>' +
+      `<tr><td>Growth 1990–2020</td><td>+${POP.paper.growth_1990_2020_pct.toFixed(1)}%</td><td>+${off.toFixed(1)}%</td></tr>` +
+      `<tr><td>Total population</td><td>~${POP.paper.total_millions} M</td><td>${fmtM(pop(2020))} M <span style="color:var(--muted)">(2020)</span></td></tr>` +
+      `<tr><td>Trend</td><td colspan="2" style="text-align:left;white-space:normal">${POP.paper.trend_note}</td></tr>`;
+    $('popCheck').classList.remove('hidden');
+  }
+  $('popSrc').textContent = 'Population: ' + (POP.source || '') + '.' +
+    (POP.projectedFrom ? ` Values from ${POP.projectedFrom} onward are projections.` : '') +
+    ' Built-up per person = built-up area from the LULC map ÷ population.';
 
   // ---------- Update ----------
   function update() {
@@ -443,7 +530,8 @@
     b.className = 'badge ' + l.type;
     $('labL').textContent = layers[idxL].year; $('labL').classList.toggle('proj', layers[idxL].type === 'projected');
     $('labR').textContent = layers[idxR].year; $('labR').classList.toggle('proj', layers[idxR].type === 'projected');
-    showOverlays(); clip(); table(); ages(); chart.update('none');
+    showOverlays(); clip(); table(); cards(); ages();
+    compChart.update('none'); idxChart.update('none');
   }
   update();
 })();
