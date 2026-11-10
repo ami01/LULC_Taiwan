@@ -11,32 +11,32 @@ window.LULC = {
  ],
  "classes": {
   "1": {
-   "name": "Class 1",
-   "color": "#4e79a7"
+   "name": "Barren",
+   "color": "#c8a26e"
   },
   "2": {
-   "name": "Class 2",
-   "color": "#f28e2b"
+   "name": "Uncultivated",
+   "color": "#b5d36b"
   },
   "3": {
-   "name": "Class 3",
-   "color": "#e15759"
+   "name": "Water Shallow",
+   "color": "#7cc6f2"
   },
   "4": {
-   "name": "Class 4",
-   "color": "#76b7b2"
+   "name": "Water Deep",
+   "color": "#1f5fa8"
   },
   "5": {
-   "name": "Class 5",
-   "color": "#edc948"
+   "name": "Built-up",
+   "color": "#d7301f"
   },
   "6": {
-   "name": "Class 6",
-   "color": "#59a14f"
+   "name": "Forest",
+   "color": "#2e7d32"
   },
   "7": {
-   "name": "Class 7",
-   "color": "#b07aa1"
+   "name": "Cultivated",
+   "color": "#f2c84b"
   }
  },
  "layers": [
