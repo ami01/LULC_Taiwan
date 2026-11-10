@@ -1,0 +1,20 @@
+{
+  "_note": "Edit names/colors here, then re-run: python tools/convert_lulc.py",
+  "classes": {
+    "1": {"name": "Class 1", "color": "#4e79a7"},
+    "2": {"name": "Class 2", "color": "#f28e2b"},
+    "3": {"name": "Class 3", "color": "#e15759"},
+    "4": {"name": "Class 4", "color": "#76b7b2"},
+    "5": {"name": "Class 5", "color": "#edc948"},
+    "6": {"name": "Class 6", "color": "#59a14f"},
+    "7": {"name": "Class 7", "color": "#b07aa1"}
+  },
+  "layers": [
+    {"file": "1990_LULC.tif",      "year": 1990, "type": "historical"},
+    {"file": "2000_LULC.tif",      "year": 2000, "type": "historical"},
+    {"file": "2010_LULC.tif",      "year": 2010, "type": "historical"},
+    {"file": "2020_LULC.tif",      "year": 2020, "type": "historical"},
+    {"file": "2030_3var_LULC.tif", "year": 2030, "type": "projected"},
+    {"file": "2050_3var_LULC.tif", "year": 2050, "type": "projected"}
+  ]
+}
