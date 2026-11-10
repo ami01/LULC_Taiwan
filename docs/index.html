@@ -174,7 +174,7 @@
       <select id="basemap">
         <option value="sat">Satellite + labels</option>
         <option value="topo">Topographic</option>
-        <option value="osm">Streets (OSM)</option>
+        <option value="streets">Streets</option>
         <option value="gray">Plain gray</option>
       </select>
     </label>
@@ -280,8 +280,8 @@
           L.tileLayer(esri('Reference/World_Boundaries_and_Places'), { pane: 'labels', maxZoom: 17 })],
     topo: [L.tileLayer(esri('World_Topo_Map'), { maxZoom: 17,
             attribution: 'Basemap &copy; Esri, HERE, Garmin, FAO, NOAA, USGS, &copy; OpenStreetMap contributors' })],
-    osm: [L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 17,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' })],
+    streets: [L.tileLayer(esri('World_Street_Map'), { maxZoom: 17,
+            attribution: 'Basemap &copy; Esri, HERE, Garmin, USGS, &copy; OpenStreetMap contributors' })],
     gray: [L.tileLayer(esri(`Canvas/${dark ? 'World_Dark_Gray_Base' : 'World_Light_Gray_Base'}`), { maxZoom: 16,
             attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' })]
   };
