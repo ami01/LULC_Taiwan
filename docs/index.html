@@ -156,6 +156,11 @@
     <p class="chartkey"><span class="popkey"></span>Population (millions, right axis) · class areas in km² (left axis, log scale)</p>
   </section>
 
+  <section id="popCheck" class="hidden">
+    <h2>Population: paper vs. official</h2>
+    <table id="popTbl"></table>
+  </section>
+
   <div class="foot">100 m resolution · UTM 51N source data · 2030/2050 are model projections (3-variable scenario).<br>
     <span id="popSrc"></span></div>
 </aside>
@@ -189,6 +194,15 @@
   const fmtM = n => (n / 1e6).toFixed(2) + '\u00a0M';
   const NA = '<td class="na">n/a</td>';
   const pct = (a, b) => { const d = 100 * (b - a) / a; return `<td class="${d > 0 ? 'pos' : d < 0 ? 'neg' : ''}">${d > 0 ? '+' : ''}${d.toFixed(1)}%</td>`; };
+  if (POP.paper && pop(1990) && pop(2020)) {
+    const off = 100 * (pop(2020) - pop(1990)) / pop(1990);
+    $('popTbl').innerHTML =
+      '<tr><th>Indicator</th><th>Paper</th><th>Official</th></tr>' +
+      `<tr><td>Growth 1990–2020</td><td>+${POP.paper.growth_1990_2020_pct.toFixed(1)}%</td><td>+${off.toFixed(1)}%</td></tr>` +
+      `<tr><td>Total population</td><td>~${POP.paper.total_millions} M</td><td>${fmtM(pop(2020))} <span style="color:var(--muted)">(2020)</span></td></tr>` +
+      `<tr><td>Trend</td><td colspan="2" style="text-align:left">${POP.paper.trend_note}</td></tr>`;
+    $('popCheck').classList.remove('hidden');
+  }
   $('popSrc').textContent = 'Population: ' + (POP.source || '') +
     (POP.projectionSource ? '; projections: ' + POP.projectionSource : '; 2030/2050 projections not yet added') + '.';
 

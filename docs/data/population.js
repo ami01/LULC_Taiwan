@@ -15,5 +15,13 @@ window.POPULATION = {
     2020: 23561236,
     2030: null,
     2050: null
+  },
+  // Population figures stated in the source paper (Liu & Arora, "Decadal analysis and simulation of
+  // land use and land cover changes…", Sect. 2 Study area & Sect. 5). The paper gives no per-year values;
+  // its population projections are only in Supplementary Fig. 1.
+  paper: {
+    growth_1990_2020_pct: 15.6,   // "from 1990–2020, the population growth is recorded 15.6%"
+    total_millions: 23,           // "Taiwan's total population of 23 million"
+    trend_note: "Negative population growth since 2020"
   }
 };
