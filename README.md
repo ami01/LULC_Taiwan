@@ -8,6 +8,7 @@ Interactive web viewer for historical (1990, 2000, 2010, 2020) and projected
 - **Timeline** – slide or play through all years.
 - **Compare** – pick any two years and drag the swipe handle.
 - Area table and trend chart per class (projected years dashed/shaded).
+- Population (NDC), built-up area per person, and age structure for each time step.
 
 ## Repository layout
 
@@ -16,6 +17,8 @@ Interactive web viewer for historical (1990, 2000, 2010, 2020) and projected
 | `*_LULC.tif` | Source rasters (EPSG:32651, 100 m) |
 | `tools/classes.json` | Class names, colours, and layer list |
 | `tools/convert_lulc.py` | Converts GeoTIFFs → `docs/data/*.png` + `docs/data/lulc.js` |
+| `data/population/*.xlsx` | NDC population exports (total, sex, broad age groups; medium variant) |
+| `tools/convert_population.py` | Converts the NDC exports → `docs/data/population.js` |
 | `docs/` | The static website served by GitHub Pages |
 
 ## Updating class names / colours

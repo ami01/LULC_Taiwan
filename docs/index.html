@@ -76,6 +76,16 @@
   .chartkey { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
   .popkey { display: inline-block; width: 16px; height: 0; border-top: 2.5px solid var(--text); vertical-align: middle; margin-right: 6px; }
   tr.sep td { border-top: 2px solid var(--line); }
+  :root { --age-young: #3a9e8f; --age-work: #8a94a6; --age-old: #d9822b; }
+  .agerow { margin-bottom: 12px; }
+  .agehead { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .agehead b { font-size: 13px; }
+  .agehead b.proj { color: var(--proj); }
+  .agehead span { color: var(--muted); }
+  .agebar { display: flex; height: 22px; border-radius: 5px; overflow: hidden; }
+  .agebar div { display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; }
+  .agekey { display: flex; gap: 14px; font-size: 11px; color: var(--muted); }
+  .agekey i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
   td.na { color: var(--muted); font-style: italic; }
   .foot { font-size: 12px; color: var(--muted); margin-top: auto; }
   .hidden { display: none !important; }
@@ -156,6 +166,16 @@
     <p class="chartkey"><span class="popkey"></span>Population (millions, right axis) · class areas in km² (left axis, log scale)</p>
   </section>
 
+  <section id="ageSec" class="hidden">
+    <h2 id="ageTitle">Population age structure</h2>
+    <div id="ageBars"></div>
+    <div class="agekey">
+      <span><i style="background:var(--age-young)"></i>0–14</span>
+      <span><i style="background:var(--age-work)"></i>15–64</span>
+      <span><i style="background:var(--age-old)"></i>65+</span>
+    </div>
+  </section>
+
   <section id="popCheck" class="hidden">
     <h2>Population: paper vs. official</h2>
     <table id="popTbl"></table>
@@ -204,7 +224,25 @@
     $('popCheck').classList.remove('hidden');
   }
   $('popSrc').textContent = 'Population: ' + (POP.source || '') +
-    (POP.projectionSource ? '; projections: ' + POP.projectionSource : '; 2030/2050 projections not yet added') + '.';
+    (POP.projectedFrom ? ` (values from ${POP.projectedFrom} onward are projections)` : '') + '.';
+
+  // ---------- Age structure ----------
+  function ageRow(y) {
+    const a = POP.age && POP.age[y], s = POP.sex && POP.sex[y];
+    if (!a) return '';
+    const t = a['0-14'] + a['15-64'] + a['65+'];
+    const seg = (v, c) => { const p = 100 * v / t; return `<div style="width:${p}%;background:var(${c})" title="${p.toFixed(1)}%">${p >= 9 ? p.toFixed(0) + '%' : ''}</div>`; };
+    const proj = POP.projectedFrom && y >= POP.projectedFrom;
+    const sexTxt = s ? `♂ ${(s.male / 1e6).toFixed(2)}M · ♀ ${(s.female / 1e6).toFixed(2)}M` : '';
+    return `<div class="agerow"><div class="agehead"><b class="${proj ? 'proj' : ''}">${y}${proj ? ' (projected)' : ''}</b><span>${sexTxt}</span></div>
+      <div class="agebar" role="img" aria-label="${y}: ages 0-14 ${(100 * a['0-14'] / t).toFixed(1)}%, 15-64 ${(100 * a['15-64'] / t).toFixed(1)}%, 65+ ${(100 * a['65+'] / t).toFixed(1)}%">
+      ${seg(a['0-14'], '--age-young')}${seg(a['15-64'], '--age-work')}${seg(a['65+'], '--age-old')}</div></div>`;
+  }
+  function ages() {
+    if (!POP.age) return;
+    $('ageSec').classList.remove('hidden');
+    $('ageBars').innerHTML = mode === 'time' ? ageRow(layers[idx].year) : ageRow(layers[idxL].year) + ageRow(layers[idxR].year);
+  }
 
   // ---------- Map ----------
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
@@ -405,7 +443,7 @@
     b.className = 'badge ' + l.type;
     $('labL').textContent = layers[idxL].year; $('labL').classList.toggle('proj', layers[idxL].type === 'projected');
     $('labR').textContent = layers[idxR].year; $('labR').classList.toggle('proj', layers[idxR].type === 'projected');
-    showOverlays(); clip(); table(); chart.update('none');
+    showOverlays(); clip(); table(); ages(); chart.update('none');
   }
   update();
 })();
